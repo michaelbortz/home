@@ -34,12 +34,12 @@
     - type: text
       content: "{% set t = states('sensor.aqara_sensor_6_temperature') %}{% set h = states('sensor.aqara_sensor_6_humidity') %}IN  {{ '%4.1f' | format(t | float) if is_number(t) else '  --' }}° {{ h | round(0, default='--') }}%"
       font: pico_8
-      position: [7, 33]
+      position: [6, 33]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
 
     # Außen: Aqara-Sensor 1
     - type: text
       content: "{% set t = states('sensor.aqara_sensor_1_temperature') %}{% set h = states('sensor.aqara_sensor_1_humidity') %}OUT {{ '%4.1f' | format(t | float) if is_number(t) else '  --' }}° {{ h | round(0, default='--') }}%"
       font: pico_8
-      position: [7, 40]
+      position: [6, 40]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
