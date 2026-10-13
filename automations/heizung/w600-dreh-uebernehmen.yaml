@@ -1,0 +1,45 @@
+# Automation (id 1791894060588): W600 Schlafzimmer: Drehen am Gerät übernehmen
+#
+# Hintergrund: Wird am Aqara W600 gedreht, hält er diesen Wert intern fest und ignoriert
+# danach neue Sollwerte von Home Assistant (Absenkung, Fenster auf, Tagmodus) – auch wenn er
+# override_active = false meldet. Ein kurzer Moduswechsel off → heat löst das.
+#
+# Ablauf: Ändert sich die Solltemperatur, wird 10 s gewartet (bis fertig gedreht ist; jeder
+# weitere Schritt startet die Wartezeit neu), dann Modus off → heat und denselben Wert erneut
+# setzen. Der gedrehte Wert bleibt, und Home Assistant behält die Kontrolle.
+# Läuft auch nach Änderungen durch Home Assistant selbst; das schadet nicht, es stellt nur
+# sicher, dass der Wert wirklich ankommt.
+
+alias: "W600 Schlafzimmer: Drehen am Gerät übernehmen"
+description: >-
+  Nach einer Änderung der Solltemperatur (z. B. Drehen am Gerät) wird der Wert per
+  Moduswechsel off → heat fest übernommen, damit der W600 weiter auf Home Assistant hört.
+triggers:
+  - trigger: state
+    entity_id: climate.schlafzimmer_aqara_thermostat
+    attribute: temperature
+conditions:
+  - condition: state
+    entity_id: climate.schlafzimmer_aqara_thermostat
+    state: heat
+  - condition: template
+    value_template: "{{ trigger.to_state.attributes.temperature is number }}"
+actions:
+  - delay:
+      seconds: 10
+  - variables:
+      soll: "{{ state_attr('climate.schlafzimmer_aqara_thermostat', 'temperature') }}"
+  - action: climate.set_hvac_mode
+    target:
+      entity_id: climate.schlafzimmer_aqara_thermostat
+    data:
+      hvac_mode: "off"
+  - delay:
+      seconds: 4
+  - action: climate.set_temperature
+    target:
+      entity_id: climate.schlafzimmer_aqara_thermostat
+    data:
+      temperature: "{{ soll }}"
+      hvac_mode: heat
+mode: restart
