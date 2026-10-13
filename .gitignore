@@ -1,3 +1,4 @@
 .env
 *.token
 secrets.yaml
+temp/
