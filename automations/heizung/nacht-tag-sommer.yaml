@@ -1,0 +1,47 @@
+# Automation (id 1768733269920): Heizung: Nacht- / Tagumschaltung + Sommermodus
+# Gesichert aus Home Assistant am 2026-10-13.
+
+id: "1768733269920"
+alias: "Heizung: Nacht- / Tagumschaltung + Sommermodus"
+description: "Regelt Tag/Nacht nach Plan, unterdrückt das Hochfahren im Sommermodus  und erzwingt Absenkung, wenn der Sommermodus aktiviert wird."
+triggers:
+  - entity_id: "schedule.thermostate_ecomodus"
+    from: "off"
+    to: "on"
+    id: "nacht_start"
+    trigger: "state"
+  - entity_id: "schedule.thermostate_ecomodus"
+    from: "on"
+    to: "off"
+    id: "nacht_ende"
+    trigger: "state"
+  - entity_id: "input_boolean.thermostat_sommermodus"
+    from: "off"
+    to: "on"
+    id: "sommer_aktiviert"
+    trigger: "state"
+actions:
+  - choose:
+      - conditions:
+          - or:
+              - condition: "trigger"
+                id: "nacht_start"
+              - condition: "trigger"
+                id: "sommer_aktiviert"
+          - condition: "state"
+            entity_id: "binary_sensor.0x54ef44100142bf54_contact"
+            state: "off"
+        sequence:
+          - action: "script.heizung_modus_absenkung_aktivieren"
+      - conditions:
+          - condition: "trigger"
+            id: "nacht_ende"
+          - condition: "state"
+            entity_id: "binary_sensor.0x54ef44100142bf54_contact"
+            state: "off"
+          - condition: "state"
+            entity_id: "input_boolean.thermostat_sommermodus"
+            state: "off"
+        sequence:
+          - action: "script.heizung_modus_tag_aktivieren"
+mode: "single"

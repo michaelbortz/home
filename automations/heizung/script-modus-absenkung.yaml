@@ -1,0 +1,20 @@
+# Skript script.heizung_modus_absenkung_aktivieren: Heizung: Modus Absenkung aktivieren
+# Gesichert aus Home Assistant am 2026-10-13.
+
+alias: "Heizung: Modus Absenkung aktivieren"
+icon: "mdi:snowflake"
+sequence:
+  - action: "climate.set_temperature"
+    target:
+      entity_id:
+        - "climate.thermostat_arbeitszimmer"
+        - "climate.kuche"
+        - "climate.thermostat_badezimmer"
+        - "climate.thermostat_schlafzimmer"
+        - "climate.thermostat_wohnzimmer"
+        - "climate.schlafzimmer_aqara_thermostat"
+    data:
+      temperature: "{{ states('input_number.temperatur_absenkung') | float }}"
+      hvac_mode: "heat"
+mode: "single"
+description: ""

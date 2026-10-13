@@ -1,0 +1,21 @@
+# Skript script.heizung_modus_tag_aktivieren: Heizung: Modus Tag aktivieren
+# Gesichert aus Home Assistant am 2026-10-13.
+
+alias: "Heizung: Modus Tag aktivieren"
+icon: "mdi:fire"
+sequence:
+  - action: "scene.turn_on"
+    target:
+      entity_id: "scene.heizung_tag_backup"
+  - action: "climate.set_preset_mode"
+    target:
+      entity_id:
+        - "climate.thermostat_arbeitszimmer"
+        - "climate.kuche"
+        - "climate.thermostat_badezimmer"
+        - "climate.thermostat_schlafzimmer"
+        - "climate.thermostat_wohnzimmer"
+    data:
+      preset_mode: "boost"
+mode: "single"
+description: ""

@@ -1,0 +1,35 @@
+# Automation (id 1770287782268): Thermostat Boost
+# Gesichert aus Home Assistant am 2026-10-13.
+
+id: "1770287782268"
+alias: "Thermostat Boost"
+description: ""
+triggers: []
+conditions: []
+actions:
+  - device_id: "e74372f81474ed9d781f200e56bae6ea"
+    domain: "climate"
+    entity_id: "c52b44bb322263dbd4721de4dc1d38bf"
+    type: "set_preset_mode"
+    preset_mode: "boost"
+  - device_id: "da773a170750588b05752b050e582414"
+    domain: "climate"
+    entity_id: "09d2901dade7f0266df8b24995f4cc43"
+    type: "set_preset_mode"
+    preset_mode: "boost"
+  - device_id: "f6cc46cf637d0c945fa6ea9223a72ad9"
+    domain: "climate"
+    entity_id: "f5ce1c5317b79d2e966233fb5e5cbe9b"
+    type: "set_preset_mode"
+    preset_mode: "boost"
+  - device_id: "c0e0744fe062bb9804c6b61fec183324"
+    domain: "climate"
+    entity_id: "f59c532ca78e6b7fd6a44b138e571cd6"
+    type: "set_preset_mode"
+    preset_mode: "boost"
+  - device_id: "fd87ba29bb477da3875090374c179b48"
+    domain: "climate"
+    entity_id: "fcb7a2584e11dfd668fbe49383305e0d"
+    type: "set_preset_mode"
+    preset_mode: "boost"
+mode: "single"

@@ -1,0 +1,60 @@
+# Automation (id 1768732953218): Lüften: Heizungen speichern & aus per Fenster
+# Gesichert aus Home Assistant am 2026-10-13.
+
+id: "1768732953218"
+alias: "Lüften: Heizungen speichern & aus per Fenster"
+description: "Senkt beim Öffnen auf Fenstertemperatur ab. Beim Schließen wird geprüft:  Sommermodus an ODER Nacht? -> Absenken. Sonst (Winter & Tag) -> Tagmodus."
+triggers:
+  - entity_id: "binary_sensor.0x54ef44100142bf54_contact"
+    from: "off"
+    to: "on"
+    id: "offnen"
+    trigger: "state"
+  - entity_id: "binary_sensor.0x54ef44100142bf54_contact"
+    from: "on"
+    to: "off"
+    id: "schliessen"
+    trigger: "state"
+actions:
+  - choose:
+      - conditions:
+          - condition: "trigger"
+            id: "offnen"
+        sequence:
+          - action: "climate.set_temperature"
+            target:
+              entity_id:
+                - "climate.thermostat_arbeitszimmer"
+                - "climate.kuche"
+                - "climate.thermostat_badezimmer"
+                - "climate.thermostat_schlafzimmer"
+                - "climate.thermostat_wohnzimmer"
+                - "climate.schlafzimmer_aqara_thermostat"
+            data:
+              temperature: "{{ states('input_number.fenster_auf_temperatur') | float }}"
+              hvac_mode: "heat"
+      - conditions:
+          - condition: "trigger"
+            id: "schliessen"
+        sequence:
+          - choose:
+              - conditions:
+                  - or:
+                      - condition: "state"
+                        entity_id: "input_boolean.thermostat_sommermodus"
+                        state: "on"
+                      - condition: "state"
+                        entity_id: "schedule.thermostate_ecomodus"
+                        state: "on"
+                sequence:
+                  - action: "script.heizung_modus_absenkung_aktivieren"
+              - conditions:
+                  - condition: "state"
+                    entity_id: "input_boolean.thermostat_sommermodus"
+                    state: "off"
+                  - condition: "state"
+                    entity_id: "schedule.thermostate_ecomodus"
+                    state: "off"
+                sequence:
+                  - action: "script.heizung_modus_tag_aktivieren"
+mode: "single"

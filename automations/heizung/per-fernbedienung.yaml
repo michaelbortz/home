@@ -1,0 +1,48 @@
+# Automation (id 1770455731798): Heizung per Fernbedienung
+# Gesichert aus Home Assistant am 2026-10-13.
+
+id: "1770455731798"
+alias: "Heizung per Fernbedienung"
+description: "Plus schaltet auf Tagesmodus (wenn Sommermodus aus) - Minus auf Absenktemperatur"
+triggers:
+  - domain: "mqtt"
+    device_id: "aaebc41a1450abb9b0e4c80de4a07c86"
+    type: "action"
+    subtype: "brightness_move_up_all"
+    trigger: "device"
+    id: "heizen"
+  - domain: "mqtt"
+    device_id: "aaebc41a1450abb9b0e4c80de4a07c86"
+    type: "action"
+    subtype: "brightness_step_up_all"
+    trigger: "device"
+    id: "heizen"
+  - domain: "mqtt"
+    device_id: "aaebc41a1450abb9b0e4c80de4a07c86"
+    type: "action"
+    subtype: "brightness_move_down_all"
+    trigger: "device"
+    id: "absenken"
+  - domain: "mqtt"
+    device_id: "aaebc41a1450abb9b0e4c80de4a07c86"
+    type: "action"
+    subtype: "brightness_step_down_all"
+    trigger: "device"
+    id: "absenken"
+conditions: []
+actions:
+  - choose:
+      - conditions:
+          - condition: "trigger"
+            id: "heizen"
+          - condition: "state"
+            entity_id: "input_boolean.thermostat_sommermodus"
+            state: "off"
+        sequence:
+          - action: "script.heizung_modus_tag_aktivieren"
+      - conditions:
+          - condition: "trigger"
+            id: "absenken"
+        sequence:
+          - action: "script.heizung_modus_absenkung_aktivieren"
+mode: "single"
