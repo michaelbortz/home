@@ -13,7 +13,6 @@ sequence:
         - "climate.thermostat_arbeitszimmer"
         - "climate.kuche"
         - "climate.thermostat_badezimmer"
-        - "climate.thermostat_schlafzimmer"
         - "climate.thermostat_wohnzimmer"
     data:
       preset_mode: "boost"

@@ -27,7 +27,6 @@ actions:
                 - "climate.thermostat_arbeitszimmer"
                 - "climate.kuche"
                 - "climate.thermostat_badezimmer"
-                - "climate.thermostat_schlafzimmer"
                 - "climate.thermostat_wohnzimmer"
                 - "climate.schlafzimmer_aqara_thermostat"
             data:

@@ -9,7 +9,6 @@ triggers:
       - "climate.thermostat_arbeitszimmer"
       - "climate.kuche"
       - "climate.thermostat_badezimmer"
-      - "climate.thermostat_schlafzimmer"
       - "climate.thermostat_wohnzimmer"
       - "climate.schlafzimmer_aqara_thermostat"
     attribute: "temperature"
@@ -18,7 +17,7 @@ conditions:
   - condition: "template"
     value_template: "{{ state_attr(trigger.entity_id, 'temperature') | float(0) > \n   states('input_number.temperatur_absenkung') | float(0) }}\n"
   - condition: "template"
-    value_template: "{% set limit = states('input_number.temperatur_absenkung') | float(0) %} {% set thermostats = [\n  'climate.thermostat_arbeitszimmer',\n  'climate.kuche',\n  'climate.thermostat_badezimmer',\n  'climate.thermostat_schlafzimmer',\n  'climate.thermostat_wohnzimmer',\n  'climate.schlafzimmer_aqara_thermostat'\n] %} {{ thermostats | map('state_attr', 'temperature') | map('float', 0) | select('le', limit) | list | count == 0 }}\n"
+    value_template: "{% set limit = states('input_number.temperatur_absenkung') | float(0) %} {% set thermostats = [\n  'climate.thermostat_arbeitszimmer',\n  'climate.kuche',\n  'climate.thermostat_badezimmer',\n  'climate.thermostat_wohnzimmer',\n  'climate.schlafzimmer_aqara_thermostat'\n] %} {{ thermostats | map('state_attr', 'temperature') | map('float', 0) | select('le', limit) | list | count == 0 }}\n"
 actions:
   - action: "scene.create"
     data:
@@ -33,9 +32,6 @@ actions:
         "climate.thermostat_badezimmer":
           state: "{{ states('climate.thermostat_badezimmer') }}"
           temperature: "{{ state_attr('climate.thermostat_badezimmer', 'temperature') }}"
-        "climate.thermostat_schlafzimmer":
-          state: "{{ states('climate.thermostat_schlafzimmer') }}"
-          temperature: "{{ state_attr('climate.thermostat_schlafzimmer', 'temperature') }}"
         "climate.thermostat_wohnzimmer":
           state: "{{ states('climate.thermostat_wohnzimmer') }}"
           temperature: "{{ state_attr('climate.thermostat_wohnzimmer', 'temperature') }}"
