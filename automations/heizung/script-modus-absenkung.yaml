@@ -9,7 +9,7 @@ sequence:
       entity_id:
         - "climate.thermostat_arbeitszimmer"
         - "climate.kuche"
-        - "climate.thermostat_badezimmer"
+        - "climate.thermostat_flur"
         - "climate.thermostat_wohnzimmer"
         - "climate.schlafzimmer_aqara_thermostat"
     data:
