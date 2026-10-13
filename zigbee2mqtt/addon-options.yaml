@@ -1,12 +1,16 @@
-# Zigbee2MQTT Edge – Add-on-Optionen
+# Zigbee2MQTT – Add-on-Optionen (stabiles Add-on 45df7312_zigbee2mqtt, ab 2026-10-13 Version 2.14.2)
 #
-# Eintragen unter: Einstellungen → Add-ons → Zigbee2MQTT Edge → Konfiguration
+# Eintragen unter: Einstellungen → Add-ons → Zigbee2MQTT → Konfiguration
 # Diese Optionen haben Vorrang vor /config/zigbee2mqtt/configuration.yaml.
 #
 # Koordinator: SONOFF Dongle Max (MG24) im Netzwerkbetrieb, MAC 28:05:A5:BC:1F:B7,
 # feste IPv4 per Fritzbox. Nicht die IPv6-Link-Local-Adresse (fe80::…) verwenden:
 # sie war am 2026-10-13 nach einem Neustart des Dongles nicht mehr erreichbar und
 # Zigbee2MQTT startete nicht (HOST_FATAL_ERROR).
+#
+# Bis 2026-10-13 lief das Edge-Add-on (Stand 2.7.2-dev). Es ist gestoppt (Start: manuell) und
+# kann entfernt werden. Grund für den Wechsel: Die alte Version kannte beim Aqara W600 weder
+# system_mode noch override_active, nach Bedienung am Gerät ignorierte er Home Assistant.
 
 data_path: /config/zigbee2mqtt
 socat:
