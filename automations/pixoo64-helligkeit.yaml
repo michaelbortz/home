@@ -1,0 +1,57 @@
+# Automation: automation.pixoo_64_helligkeit_nach_sonnenstand_regeln (id 1784563239304)
+#
+# Ab Sonnenuntergang 1 %, ab Sonnenaufgang 30 %.
+# Schaltet das Display nie ein: Ist es aus (z. B. über "Fernbedienung Power Off"), passiert nichts.
+# Wird es eingeschaltet, bekommt es sofort die zum Sonnenstand passende Helligkeit.
+
+alias: "Pixoo 64: Helligkeit nach Sonnenstand regeln"
+description: >-
+  Ab Sonnenuntergang 1 %, ab Sonnenaufgang 30 %. Schaltet das Display nie ein:
+  Ist es aus, passiert nichts. Wird es eingeschaltet, bekommt es sofort die
+  passende Helligkeit.
+triggers:
+  - trigger: sun
+    event: sunset
+    id: nacht
+  - trigger: sun
+    event: sunrise
+    id: tag
+  - trigger: state
+    entity_id: light.divoom_pixoo_64_light
+    from: "off"
+    to: "on"
+    id: eingeschaltet
+conditions:
+  - condition: state
+    entity_id: light.divoom_pixoo_64_light
+    state: "on"
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: nacht
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.divoom_pixoo_64_light
+            data:
+              brightness_pct: 1
+      - conditions:
+          - condition: trigger
+            id: tag
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.divoom_pixoo_64_light
+            data:
+              brightness_pct: 30
+      - conditions:
+          - condition: trigger
+            id: eingeschaltet
+        sequence:
+          - action: light.turn_on
+            target:
+              entity_id: light.divoom_pixoo_64_light
+            data:
+              brightness_pct: "{{ 1 if is_state('sun.sun', 'below_horizon') else 30 }}"
+mode: single

@@ -1,0 +1,45 @@
+# Divoom Pixoo 64 (Wohnzimmer) – Seitenkonfiguration
+#
+# Integration: divoom_pixoo (https://github.com/gickowtf/pixoo-homeassistant)
+# Eintragen unter: Einstellungen → Geräte & Dienste → Divoom Pixoo 64 → Konfigurieren → pages_data
+# Gerät: 192.168.178.95, Abfrageintervall 1 s
+#
+# Temperaturen werden mit '%4.1f' auf feste Breite gebracht (unter 10 ° mit führendem Leerzeichen).
+# Ist ein Sensor nicht verfügbar, erscheint '--' statt "Template Error".
+
+- page_type: components
+  components:
+    # Wetter-Icon oben rechts
+    - type: image
+      image_path: "/config/custom_components/divoom_pixoo/img/weather/{{ states('weather.forecast_home') }}.png"
+      position: [46, 7]
+      height: 8
+      width: 8
+
+    # Uhrzeit
+    - type: text
+      content: "{{ now().strftime('%H:%M') }}"
+      font: clock
+      position: [6, 5]
+      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
+
+    # Wochentag und Datum
+    - type: text
+      content: "{% set days = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'] %} {{ days[now().weekday()] }} {{ now().strftime('%d.%m.%Y') }}"
+      font: pico_8
+      position: [6, 21]
+      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
+
+    # Innen: Aqara-Sensor 6
+    - type: text
+      content: "{% set t = states('sensor.aqara_sensor_6_temperature') %}{% set h = states('sensor.aqara_sensor_6_humidity') %}IN  {{ '%4.1f' | format(t | float) if is_number(t) else '  --' }}° {{ h | round(0, default='--') }}%"
+      font: pico_8
+      position: [7, 33]
+      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
+
+    # Außen: Aqara-Sensor 1
+    - type: text
+      content: "{% set t = states('sensor.aqara_sensor_1_temperature') %}{% set h = states('sensor.aqara_sensor_1_humidity') %}OUT {{ '%4.1f' | format(t | float) if is_number(t) else '  --' }}° {{ h | round(0, default='--') }}%"
+      font: pico_8
+      position: [7, 40]
+      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"

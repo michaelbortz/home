@@ -1,0 +1,21 @@
+# Zigbee2MQTT Edge – Add-on-Optionen
+#
+# Eintragen unter: Einstellungen → Add-ons → Zigbee2MQTT Edge → Konfiguration
+# Diese Optionen haben Vorrang vor /config/zigbee2mqtt/configuration.yaml.
+#
+# Koordinator: SONOFF Dongle Max (MG24) im Netzwerkbetrieb, MAC 28:05:A5:BC:1F:B7,
+# feste IPv4 per Fritzbox. Nicht die IPv6-Link-Local-Adresse (fe80::…) verwenden:
+# sie war am 2026-10-13 nach einem Neustart des Dongles nicht mehr erreichbar und
+# Zigbee2MQTT startete nicht (HOST_FATAL_ERROR).
+
+data_path: /config/zigbee2mqtt
+socat:
+  enabled: false
+  master: pty,raw,echo=0,link=/tmp/ttyZ2M,mode=777
+  slave: tcp-listen:8485,keepalive,nodelay,reuseaddr,keepidle=1,keepintvl=1,keepcnt=5
+  options: "-d -d"
+  log: false
+mqtt: {}
+serial:
+  port: tcp://192.168.178.75:6638
+  adapter: ember
