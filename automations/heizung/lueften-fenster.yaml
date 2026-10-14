@@ -1,9 +1,12 @@
 # Automation (id 1768732953218): Lüften: Heizungen speichern & aus per Fenster
-# Gesichert aus Home Assistant am 2026-10-13.
+# Gesichert aus Home Assistant am 2026-10-13, geändert am 2026-10-14.
+#
+# Der W600 Schlafzimmer übernimmt keine niedrigeren Sollwerte (siehe README) und wird beim
+# Öffnen deshalb ausgeschaltet statt auf die Fenstertemperatur gesetzt.
 
 id: "1768732953218"
 alias: "Lüften: Heizungen speichern & aus per Fenster"
-description: "Senkt beim Öffnen auf Fenstertemperatur ab. Beim Schließen wird geprüft:  Sommermodus an ODER Nacht? -> Absenken. Sonst (Winter & Tag) -> Tagmodus."
+description: "Senkt beim Öffnen auf Fenstertemperatur ab (W600 Schlafzimmer: aus, weil er niedrigere Sollwerte nicht übernimmt). Beim Schließen wird geprüft:  Sommermodus an ODER Nacht? -> Absenken. Sonst (Winter & Tag) -> Tagmodus."
 triggers:
   - entity_id: "binary_sensor.0x54ef44100142bf54_contact"
     from: "off"
@@ -28,10 +31,14 @@ actions:
                 - "climate.kuche"
                 - "climate.thermostat_flur"
                 - "climate.thermostat_wohnzimmer"
-                - "climate.schlafzimmer_aqara_thermostat"
             data:
               temperature: "{{ states('input_number.fenster_auf_temperatur') | float }}"
               hvac_mode: "heat"
+          - action: "climate.set_hvac_mode"
+            target:
+              entity_id: "climate.schlafzimmer_aqara_thermostat"
+            data:
+              hvac_mode: "off"
       - conditions:
           - condition: "trigger"
             id: "schliessen"

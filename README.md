@@ -39,18 +39,22 @@ Wenn in Home Assistant etwas geändert wird, die passende Datei hier mit aktuali
 
 ## Bekannte Probleme und Lösungen
 
-### Aqara W600 (Schlafzimmer) ignoriert Home Assistant nach Drehen am Gerät
+### Aqara W600 (Schlafzimmer) übernimmt keine niedrigeren Sollwerte
 
-**Symptom:** Home Assistant zeigt eine neue Solltemperatur an (z. B. 5 °C bei offenem Fenster), aber der W600 regelt weiter auf den alten Wert. Das Ventil bleibt offen, das Display zeigt den alten Sollwert. Das war auch das Problem bei der ersten Einbindung 2025.
+**Symptom:** Home Assistant zeigt eine niedrigere Solltemperatur an (z. B. 5 °C bei offenem Fenster, 17 °C Absenkung), aber der W600 regelt weiter auf den alten Wert. Das Ventil bleibt offen, das Display zeigt den alten Sollwert. Das war auch das Problem bei der ersten Einbindung 2025.
 
-**Ursache:** Wird am W600 gedreht, hält er den gedrehten Wert intern fest und ignoriert danach alle Sollwerte, die per Zigbee kommen. Zigbee2MQTT meldet die neuen Werte trotzdem als übernommen, und `override_active` steht sogar auf `false`. Ein Batteriewechsel hilft nicht.
+**Was getestet ist (2026-10-14):**
+- Zigbee2MQTT schreibt den Sollwert, und der W600 meldet ihn als `occupied_heating_setpoint` zurück. Trotzdem zeigt das Display weiter den alten Wert, und nach etwa 1 Minute regelt das Ventil wieder darauf.
+- Das gilt für jede Absenkung, auch über der Raumtemperatur (21 → 19 °C bei 18,5 °C im Raum). Erhöhungen kommen an, ebenso **off** und das Wiedereinschalten.
+- Mit dem Drehen am Gerät hat es nichts zu tun: Auch ein Wert, den Home Assistant gesetzt hat, wird nicht mehr abgesenkt.
+- Ohne Wirkung: Moduswechsel off → heat, `temperature_setpoint_hold_duration` 65535 statt 1. `temperature_setpoint_hold` (steht auf `true`) lässt sich nicht schreiben („No converter available“).
+- Die Firmware-Version meldet Zigbee2MQTT als unbekannt (-1). Updates gehen laut Aqara nur über ein Aqara-Gateway.
 
-Dazu kam, dass das alte Zigbee2MQTT (Edge-Add-on, Stand 2.7.2-dev) den W600 nur unvollständig kannte: kein `system_mode`, kein `override_active`, keine Batterie. Home Assistant zeigte deshalb oft fälschlich „off“ an.
+Beim alten Zigbee2MQTT (Edge-Add-on 2.7.2-dev) kam dazu, dass es den W600 nur unvollständig kannte (kein `system_mode`, kein `override_active`, keine Batterie). Seit 2026-10-13 läuft das stabile Add-on 2.14.2, siehe `zigbee2mqtt/addon-options.yaml`.
 
-**Lösung (2026-10-13):**
-1. Wechsel auf das stabile Zigbee2MQTT-Add-on (2.14.2) mit vollständiger W600-Unterstützung, siehe `zigbee2mqtt/addon-options.yaml`.
-2. Ein kurzer Moduswechsel **off → heat** hebt die Sperre auf. Danach übernimmt der W600 wieder jeden Sollwert.
-3. Die Automation **„W600 Schlafzimmer: Drehen am Gerät übernehmen“** (`automations/heizung/w600-dreh-uebernehmen.yaml`) macht das automatisch: Nach jeder Änderung der Solltemperatur wartet sie 10 s, schaltet off → heat und setzt den gedrehten Wert erneut. Der Wert bleibt erhalten, Home Assistant behält die Kontrolle, und „Tag-Werte sichern“ speichert ihn als neuen Tageswert.
+**Notlösung (2026-10-14):** Statt abzusenken wird der W600 **ausgeschaltet**: beim Öffnen des Fensters (`lueften-fenster.yaml`) und im Skript „Modus Absenkung“ (`script-modus-absenkung.yaml`, also nachts, im Sommermodus und mit Minus an der Fernbedienung). Der Tagmodus schaltet ihn über die Sicherungsszene wieder auf `heat` mit seinem Tageswert.
+
+Die Automation „W600 Schlafzimmer: Drehen am Gerät übernehmen“ (`w600-dreh-uebernehmen.yaml`, off → heat nach jeder Änderung) beruhte auf einer falschen Annahme und hilft nicht.
 
 **Hinweise:**
 - Der W600 kennt kein Boost. Im Skript „Modus Tag“ bekommt er seinen Tageswert nur über die Sicherungsszene.

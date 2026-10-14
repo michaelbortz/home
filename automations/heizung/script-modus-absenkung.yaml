@@ -1,5 +1,9 @@
 # Skript script.heizung_modus_absenkung_aktivieren: Heizung: Modus Absenkung aktivieren
-# Gesichert aus Home Assistant am 2026-10-13.
+# Gesichert aus Home Assistant am 2026-10-13, geändert am 2026-10-14.
+#
+# Der W600 Schlafzimmer übernimmt keine niedrigeren Sollwerte (siehe README) und wird
+# deshalb ausgeschaltet statt abgesenkt. Der Tagmodus schaltet ihn über die Sicherungsszene
+# wieder auf heat.
 
 alias: "Heizung: Modus Absenkung aktivieren"
 icon: "mdi:snowflake"
@@ -11,9 +15,13 @@ sequence:
         - "climate.kuche"
         - "climate.thermostat_flur"
         - "climate.thermostat_wohnzimmer"
-        - "climate.schlafzimmer_aqara_thermostat"
     data:
       temperature: "{{ states('input_number.temperatur_absenkung') | float }}"
       hvac_mode: "heat"
+  - action: "climate.set_hvac_mode"
+    target:
+      entity_id: "climate.schlafzimmer_aqara_thermostat"
+    data:
+      hvac_mode: "off"
 mode: "single"
-description: ""
+description: "W600 Schlafzimmer wird ausgeschaltet statt abgesenkt, weil er niedrigere Sollwerte nicht übernimmt."
