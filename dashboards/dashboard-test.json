@@ -1,0 +1,581 @@
+{
+  "views": [
+    {
+      "title": "Zuhause",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading_style": "title",
+              "heading": "Thermostate ",
+              "icon": "mdi:radiator"
+            },
+            {
+              "type": "tile",
+              "entity": "climate.thermostat_arbeitszimmer",
+              "name": {
+                "type": "area"
+              },
+              "show_entity_picture": false,
+              "hide_state": false,
+              "state_content": [
+                "temperature",
+                "current_temperature"
+              ],
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "climate.kuche",
+              "name": {
+                "type": "area"
+              },
+              "show_entity_picture": false,
+              "hide_state": false,
+              "state_content": [
+                "temperature",
+                "current_temperature"
+              ],
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "climate.thermostat_wohnzimmer",
+              "name": {
+                "type": "area"
+              },
+              "show_entity_picture": false,
+              "hide_state": false,
+              "state_content": [
+                "temperature",
+                "current_temperature"
+              ],
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "climate.schlafzimmer_aqara_thermostat",
+              "name": {
+                "type": "area"
+              },
+              "show_entity_picture": false,
+              "hide_state": false,
+              "state_content": [
+                "temperature",
+                "current_temperature"
+              ],
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "climate.thermostat_flur",
+              "name": {
+                "type": "area"
+              },
+              "show_entity_picture": false,
+              "hide_state": false,
+              "state_content": [
+                "temperature",
+                "current_temperature"
+              ],
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "square": true,
+              "type": "grid",
+              "columns": 2,
+              "cards": [
+                {
+                  "show_name": false,
+                  "show_icon": true,
+                  "type": "button",
+                  "name": "Heizung Tag (Boost)",
+                  "icon": "mdi:fire",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.heizung_modus_tag_aktivieren"
+                  },
+                  "color": "accent",
+                  "hold_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Heizung Absenken",
+                  "show_name": false,
+                  "icon": "mdi:snowflake",
+                  "tap_action": {
+                    "action": "call-service",
+                    "service": "script.heizung_modus_absenkung_aktivieren"
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  }
+                }
+              ],
+              "grid_options": {
+                "columns": 6,
+                "rows": "auto"
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading_style": "title",
+              "heading": "Steckdosen ",
+              "icon": "mdi:power"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.steckdose_1"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.steckdose_2"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.steckdose_3"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.steckdose_4"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.steckdose_fernseher_1"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.steckdose_fernseher_2"
+            },
+            {
+              "type": "tile",
+              "entity": "switch.steckdose_5"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading_style": "title",
+              "heading": "Lampen",
+              "icon": "mdi:lightbulb"
+            },
+            {
+              "type": "tile",
+              "entity": "light.lampe_arbeitszimmer",
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "light.lampe_terasse"
+            },
+            {
+              "type": "tile",
+              "entity": "light.divoom_pixoo_64_light"
+            },
+            {
+              "type": "tile",
+              "entity": "input_select.pixoo_farbe"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:navbar-card",
+              "routes": [
+                {
+                  "icon": "mdi:home",
+                  "label": "Home",
+                  "url": "/dashboard-test/0"
+                },
+                {
+                  "hold_action": {
+                    "action": "navigate",
+                    "navigation_path": "/config/devices/dashboard"
+                  },
+                  "icon": "mdi:leak",
+                  "label": "Devices",
+                  "url": "/dashboard-test/sensoren"
+                },
+                {
+                  "icon": "mdi:radiator",
+                  "label": "",
+                  "url": "/dashboard-test/heizung"
+                },
+                {
+                  "icon": "mdi:television",
+                  "label": "",
+                  "url": "/dashboard-test/amazon"
+                }
+              ],
+              "grid_options": {
+                "columns": 12,
+                "rows": 1
+              }
+            }
+          ],
+          "column_span": 1
+        }
+      ],
+      "header": {},
+      "type": "sections",
+      "max_columns": 4,
+      "icon": "mdi:home-outline",
+      "cards": [],
+      "visible": [
+        {
+          "user": "6664e0429c6b4842b7f3d40ba3a1a648"
+        },
+        {
+          "user": "d8045a5d26444f10b5686176f6388fe0"
+        }
+      ]
+    },
+    {
+      "type": "sections",
+      "max_columns": 4,
+      "title": "Sensoren",
+      "path": "sensoren",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Garten",
+              "multiline_secondary": true,
+              "secondary": "{{ states('sensor.aqara_sensor_1_temperature') }}°C | {{ states('sensor.aqara_sensor_1_humidity') }}% \nBatterie {{ states('sensor.aqara_sensor_1_battery') }}%",
+              "icon": "mdi:thermometer",
+              "entity": "sensor.aqara_sensor_1_temperature",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_1_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "features_position": "bottom"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Wohnzimmer",
+              "multiline_secondary": true,
+              "secondary": "{{ states('sensor.aqara_sensor_6_temperature') }}°C | {{\nstates('sensor.aqara_sensor_6_humidity') }}% \nBatterie {{ states('sensor.aqara_sensor_6_battery') }}%",
+              "icon": "mdi:thermometer",
+              "entity": "sensor.aqara_sensor_6_temperature",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_6_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "features_position": "bottom"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Arbeitszimmer",
+              "multiline_secondary": true,
+              "secondary": "{{ states('sensor.aqara_sensor_2_temperature') }}°C | {{\nstates('sensor.aqara_sensor_2_humidity') }}%\nBatterie {{ states('sensor.aqara_sensor_2_battery') }}%",
+              "icon": "mdi:thermometer",
+              "entity": "sensor.aqara_sensor_2_temperature",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_2_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "features_position": "bottom"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Flur",
+              "multiline_secondary": true,
+              "secondary": "{{ states('sensor.aqara_sensor_7_temperature') }}°C | {{\nstates('sensor.aqara_sensor_7_humidity') }}%  \nBatterie {{\nstates('sensor.aqara_sensor_7_battery') }}%",
+              "icon": "mdi:thermometer",
+              "entity": "sensor.aqara_sensor_7_temperature",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_7_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "features_position": "bottom"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Schlafzimmer",
+              "multiline_secondary": true,
+              "secondary": "{{ states('sensor.aqara_sensor_4_temperature') }}°C | {{\nstates('sensor.aqara_sensor_4_humidity') }}% \nBatterie {{\nstates('sensor.aqara_sensor_4_battery') }}%",
+              "icon": "mdi:thermometer",
+              "entity": "sensor.aqara_sensor_4_temperature",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_4_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "features_position": "bottom"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Badezimmer",
+              "multiline_secondary": true,
+              "secondary": "{{ states('sensor.aqara_sensor_3_temperature') }}°C | {{\nstates('sensor.aqara_sensor_3_humidity') }}%\nBatterie {{\nstates('sensor.aqara_sensor_3_battery') }}%",
+              "icon": "mdi:thermometer",
+              "entity": "sensor.aqara_sensor_3_temperature",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_3_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "features_position": "bottom"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Küche",
+              "multiline_secondary": true,
+              "secondary": "{{ states('sensor.aqara_sensor_5_temperature') }}°C | {{\nstates('sensor.aqara_sensor_5_humidity') }}%\nBatterie {{\nstates('sensor.aqara_sensor_5_battery') }}%",
+              "icon": "mdi:thermometer",
+              "entity": "sensor.aqara_sensor_5_temperature",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_5_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "features_position": "bottom"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Küche Wasser",
+              "secondary": "{% if states('binary_sensor.aqara_wassersensor_water_leak') == 'on' %} Wasserproblem !? {% else %} Alles iO {% endif %} |  {{ states('sensor.aqara_wassersensor_battery') }}%",
+              "icon": "mdi:water-off",
+              "entity": "sensor.aqara_sensor_5_temperature",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "color": "{% if states('binary_sensor.aqara_wassersensor_water_leak') == 'on' %} red {% else %} blue {% endif %}",
+              "features_position": "bottom"
+            },
+            {
+              "type": "heading",
+              "heading_style": "title",
+              "heading": "Sensoren ",
+              "icon": "mdi:leak"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.0x54ef44100142bf54_contact",
+              "icon": "mdi:window-closed",
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.fenster_sensor_bad_aqara_contact",
+              "vertical": false,
+              "features_position": "bottom"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:navbar-card",
+              "routes": [
+                {
+                  "icon": "mdi:home",
+                  "label": "Home",
+                  "url": "/dashboard-test/0"
+                },
+                {
+                  "hold_action": {
+                    "action": "navigate",
+                    "navigation_path": "/config/devices/dashboard"
+                  },
+                  "icon": "mdi:leak",
+                  "label": "Devices",
+                  "url": "/dashboard-test/sensoren"
+                },
+                {
+                  "icon": "mdi:radiator",
+                  "label": "",
+                  "url": "/dashboard-test/heizung"
+                },
+                {
+                  "icon": "mdi:television",
+                  "label": "",
+                  "url": "/dashboard-test/amazon"
+                }
+              ],
+              "grid_options": {
+                "columns": 12,
+                "rows": 1
+              }
+            }
+          ]
+        }
+      ],
+      "icon": "mdi:leak",
+      "cards": [],
+      "visible": [
+        {
+          "user": "6664e0429c6b4842b7f3d40ba3a1a648"
+        },
+        {
+          "user": "d8045a5d26444f10b5686176f6388fe0"
+        }
+      ],
+      "show_icon_and_title": false
+    },
+    {
+      "type": "sections",
+      "max_columns": 4,
+      "icon": "mdi:radiator",
+      "path": "heizung",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "tile",
+              "entity": "schedule.thermostate_ecomodus",
+              "vertical": false,
+              "features_position": "bottom",
+              "grid_options": {
+                "columns": 6,
+                "rows": 1
+              },
+              "card_mod": {
+                "style": "ha-card {\n  {% if is_state('input_boolean.thermostat_sommermodus', 'on') %}\n    opacity: 0.4 !important;\n    filter: grayscale(100%) !important;\n    pointer-events: none !important;\n  {% endif %}\n}\n"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "input_number.temperatur_absenkung",
+              "vertical": false,
+              "features_position": "bottom",
+              "grid_options": {
+                "columns": 6,
+                "rows": 1
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "input_boolean.thermostat_sommermodus",
+              "name": "Sommermodus",
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "heading",
+              "icon": "mdi:battery",
+              "heading_style": "subtitle",
+              "heading": "Batterien Thermostate"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.thermostat_arbeitszimmer_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.thermostat_flur_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.kuche_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.thermostat_wohnzimmer_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "heading",
+              "icon": "mdi:power",
+              "heading_style": "subtitle",
+              "heading": "Steckdose Staubi"
+            },
+            {
+              "type": "tile",
+              "entity": "input_number.steckdose_5_ausschalten_nach_x_minuten"
+            },
+            {
+              "type": "tile",
+              "entity": "input_boolean.steckdose_5_automatisch_ausschalten"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Neuer Abschnitt"
+            },
+            {
+              "type": "custom:navbar-card",
+              "routes": [
+                {
+                  "icon": "mdi:home",
+                  "label": "Home",
+                  "url": "/dashboard-test/0"
+                },
+                {
+                  "hold_action": {
+                    "action": "navigate",
+                    "navigation_path": "/config/devices/dashboard"
+                  },
+                  "icon": "mdi:leak",
+                  "label": "Devices",
+                  "url": "/dashboard-test/sensoren"
+                },
+                {
+                  "icon": "mdi:radiator",
+                  "label": "",
+                  "url": "/dashboard-test/heizung"
+                },
+                {
+                  "icon": "mdi:television",
+                  "label": "",
+                  "url": "/dashboard-test/amazon"
+                }
+              ],
+              "grid_options": {
+                "columns": 12,
+                "rows": 1
+              }
+            }
+          ]
+        }
+      ],
+      "title": "Heizung",
+      "cards": []
+    }
+  ]
+}
