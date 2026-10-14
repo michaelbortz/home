@@ -54,7 +54,7 @@ Beim alten Zigbee2MQTT (Edge-Add-on 2.7.2-dev) kam dazu, dass es den W600 nur un
 
 **Notlösung (2026-10-14):** Statt abzusenken wird der W600 **ausgeschaltet**: beim Öffnen des Fensters (`lueften-fenster.yaml`) und im Skript „Modus Absenkung“ (`script-modus-absenkung.yaml`, also nachts, im Sommermodus und mit Minus an der Fernbedienung). Der Tagmodus schaltet ihn über die Sicherungsszene wieder auf `heat` mit seinem Tageswert.
 
-Die Automation „W600 Schlafzimmer: Drehen am Gerät übernehmen“ (`w600-dreh-uebernehmen.yaml`, off → heat nach jeder Änderung) beruhte auf einer falschen Annahme und hilft nicht.
+Die Automation „W600 Schlafzimmer: Drehen am Gerät übernehmen“ (`w600-dreh-uebernehmen.yaml`, off → heat nach jeder Änderung) beruhte auf einer falschen Annahme, hilft nicht und ist seit 2026-10-14 deaktiviert.
 
 **Hinweise:**
 - Der W600 kennt kein Boost. Im Skript „Modus Tag“ bekommt er seinen Tageswert nur über die Sicherungsszene.

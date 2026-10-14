@@ -1,5 +1,8 @@
 # Automation (id 1791894060588): W600 Schlafzimmer: Drehen am Gerät übernehmen
 #
+# DEAKTIVIERT am 2026-10-14: Die Annahme unten hat sich als falsch erwiesen. Der W600 übernimmt
+# generell keine niedrigeren Sollwerte, off → heat hilft nicht (siehe README).
+#
 # Hintergrund: Wird am Aqara W600 gedreht, hält er diesen Wert intern fest und ignoriert
 # danach neue Sollwerte von Home Assistant (Absenkung, Fenster auf, Tagmodus) – auch wenn er
 # override_active = false meldet. Ein kurzer Moduswechsel off → heat löst das.
