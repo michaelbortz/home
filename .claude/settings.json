@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Invoke-RestMethod http://homeassistant.local:8123/api/services/*)"
+    ]
+  },
+  "autoMode": {
+    "allow": [
+      "$defaults",
+      "Service calls (POST) to the user's own Home Assistant at http://homeassistant.local:8123/api/services/... to switch or set devices, after the user has explicitly agreed to that specific change in the conversation"
+    ]
+  }
+}
