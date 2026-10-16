@@ -520,6 +520,15 @@
               "features_position": "bottom"
             },
             {
+              "type": "tile",
+              "entity": "sensor.schlafzimmer_danfoss_ally_battery",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
               "type": "heading",
               "icon": "mdi:power",
               "heading_style": "subtitle",
