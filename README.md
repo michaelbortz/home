@@ -30,7 +30,7 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 |---|---|
 | `pixoo64/pages.yaml` | Seiten der Divoom Pixoo 64 im Wohnzimmer (Uhr, Datum, Wetter, Temperaturen) |
 | `automations/pixoo64-helligkeit.yaml` | Pixoo-Helligkeit nach Sonnenstand (1 % nachts, 30 % tagsüber, schaltet nie ein) |
-| `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost) |
+| `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
 | `dashboards/` | Dashboards im Speichermodus als JSON, wie in Home Assistant gespeichert (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
 | `zigbee2mqtt/addon-options.yaml` | Add-on-Optionen von Zigbee2MQTT (Verbindung zum Zigbee-Dongle) |
 | `temp/` | Lokale Ablage für Logs und Ähnliches, wird nicht eingecheckt |
@@ -57,7 +57,7 @@ Beim alten Zigbee2MQTT (Edge-Add-on 2.7.2-dev) kam dazu, dass es den W600 nur un
 **Hinweise zum Danfoss Ally:**
 - In Home Assistant kennt er nur den Modus `heat`, also weder off noch Boost. Im Skript „Modus Tag“ bekommt er seinen Tageswert über die Sicherungsszene.
 - Anlernen: Batterien rein, „o“ 3 s bis **M**, montieren, „o“ kurz (Kopplung), danach „o“ 3 s (Montage abschließen, Anpassungsfahrt). Fällt er nach dem Anlernen wieder raus, „o“ noch einmal kurz drücken und danach in Zigbee2MQTT die Konfiguration erneut anstoßen.
-- Er fährt nachts automatisch eine Anpassungsfahrt (`switch.schlafzimmer_danfoss_ally_adaptation_run_settings`). Stört das Geräusch, kann man sie abschalten.
+- Die automatische Anpassungsfahrt (sonst nachts) ist abgeschaltet (`switch.schlafzimmer_danfoss_ally_adaptation_run_settings`). Stattdessen löst `ally-anpassungsfahrt.yaml` sie sonntags um 14 Uhr aus.
 - Batteriegerät: Befehle kommen erst an, wenn er sich das nächste Mal meldet, das kann etwas dauern.
 
 ### Zigbee2MQTT startet nicht (HOST_FATAL_ERROR, ETIMEDOUT fe80::…)

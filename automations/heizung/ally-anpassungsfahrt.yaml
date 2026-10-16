@@ -1,0 +1,24 @@
+# Automation (id 1792145000001): Danfoss Ally Schlafzimmer: Anpassungsfahrt tagsüber
+# Angelegt in Home Assistant am 2026-10-16.
+#
+# Die automatische Anpassungsfahrt des Ally läuft sonst nachts und ist im Schlafzimmer zu
+# hören. Sie ist abgeschaltet (switch.schlafzimmer_danfoss_ally_adaptation_run_settings = off)
+# und wird stattdessen einmal pro Woche tagsüber ausgelöst.
+
+id: "1792145000001"
+alias: "Danfoss Ally Schlafzimmer: Anpassungsfahrt tagsüber"
+description: "Die automatische Nachtfahrt ist abgeschaltet (zu laut im Schlafzimmer). Stattdessen einmal pro Woche sonntags um 14 Uhr."
+triggers:
+  - trigger: "time"
+    at: "14:00:00"
+conditions:
+  - condition: "time"
+    weekday:
+      - "sun"
+actions:
+  - action: "select.select_option"
+    target:
+      entity_id: "select.schlafzimmer_danfoss_ally_adaptation_run_control"
+    data:
+      option: "initiate_adaptation"
+mode: "single"
