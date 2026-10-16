@@ -30,8 +30,8 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 |---|---|
 | `pixoo64/pages.yaml` | Seiten der Divoom Pixoo 64 im Wohnzimmer (Uhr, Datum, Wetter, Temperaturen) |
 | `automations/pixoo64-helligkeit.yaml` | Pixoo-Helligkeit nach Sonnenstand (1 % nachts, 30 % tagsüber, schaltet nie ein) |
-| `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, W600-Dreh übernehmen) |
-| `dashboards/` | Dashboards im Speichermodus als JSON, unverändert aus Home Assistant gelesen (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
+| `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost) |
+| `dashboards/` | Dashboards im Speichermodus als JSON, wie in Home Assistant gespeichert (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
 | `zigbee2mqtt/addon-options.yaml` | Add-on-Optionen von Zigbee2MQTT (Verbindung zum Zigbee-Dongle) |
 | `temp/` | Lokale Ablage für Logs und Ähnliches, wird nicht eingecheckt |
 
@@ -39,7 +39,7 @@ Wenn in Home Assistant etwas geändert wird, die passende Datei hier mit aktuali
 
 ## Bekannte Probleme und Lösungen
 
-### Aqara W600 (Schlafzimmer) übernimmt keine niedrigeren Sollwerte
+### Aqara W600 (Schlafzimmer) übernahm keine niedrigeren Sollwerte (ersetzt am 2026-10-16)
 
 **Symptom:** Home Assistant zeigt eine niedrigere Solltemperatur an (z. B. 5 °C bei offenem Fenster, 17 °C Absenkung), aber der W600 regelt weiter auf den alten Wert. Das Ventil bleibt offen, das Display zeigt den alten Sollwert. Das war auch das Problem bei der ersten Einbindung 2025.
 
@@ -52,14 +52,13 @@ Wenn in Home Assistant etwas geändert wird, die passende Datei hier mit aktuali
 
 Beim alten Zigbee2MQTT (Edge-Add-on 2.7.2-dev) kam dazu, dass es den W600 nur unvollständig kannte (kein `system_mode`, kein `override_active`, keine Batterie). Seit 2026-10-13 läuft das stabile Add-on 2.14.2, siehe `zigbee2mqtt/addon-options.yaml`.
 
-**Notlösung (2026-10-14):** Statt abzusenken wird der W600 **ausgeschaltet**: beim Öffnen des Fensters (`lueften-fenster.yaml`) und im Skript „Modus Absenkung“ (`script-modus-absenkung.yaml`, also nachts, im Sommermodus und mit Minus an der Fernbedienung). Der Tagmodus schaltet ihn über die Sicherungsszene wieder auf `heat` mit seinem Tageswert.
+**Lösung (2026-10-16):** Der W600 wurde durch einen **Danfoss Ally** (014G2461, Zigbee) ersetzt, `climate.schlafzimmer_danfoss_ally`. Er ist direkt an Zigbee2MQTT angelernt, ohne App und ohne Gateway, und sitzt mit dem M30-×-1,5-Adapter auf dem Ventil. Fenster, Absenkung, Tagmodus und Tag-Werte-Sicherung steuern ihn wie die anderen Thermostate über Sollwerte. Die Notlösung mit „off“ und die Automation „W600 Drehen übernehmen“ sind entfernt, der W600 ist aus Zigbee2MQTT gelöscht.
 
-Die Automation „W600 Schlafzimmer: Drehen am Gerät übernehmen“ (`w600-dreh-uebernehmen.yaml`, off → heat nach jeder Änderung) beruhte auf einer falschen Annahme, hilft nicht und ist seit 2026-10-14 deaktiviert.
-
-**Hinweise:**
-- Der W600 kennt kein Boost. Im Skript „Modus Tag“ bekommt er seinen Tageswert nur über die Sicherungsszene.
-- In der Sicherungsszene steht für den W600 fest `heat`, damit ein falsch gemeldetes „off“ ihn nicht ausschaltet.
-- Nach dem Einsetzen der Batterien zeigt er **F1**, bis er am Heizkörper kalibriert ist (`button.schlafzimmer_aqara_thermostat_calibrate`).
+**Hinweise zum Danfoss Ally:**
+- In Home Assistant kennt er nur den Modus `heat`, also weder off noch Boost. Im Skript „Modus Tag“ bekommt er seinen Tageswert über die Sicherungsszene.
+- Anlernen: Batterien rein, „o“ 3 s bis **M**, montieren, „o“ kurz (Kopplung), danach „o“ 3 s (Montage abschließen, Anpassungsfahrt). Fällt er nach dem Anlernen wieder raus, „o“ noch einmal kurz drücken und danach in Zigbee2MQTT die Konfiguration erneut anstoßen.
+- Er fährt nachts automatisch eine Anpassungsfahrt (`switch.schlafzimmer_danfoss_ally_adaptation_run_settings`). Stört das Geräusch, kann man sie abschalten.
+- Batteriegerät: Befehle kommen erst an, wenn er sich das nächste Mal meldet, das kann etwas dauern.
 
 ### Zigbee2MQTT startet nicht (HOST_FATAL_ERROR, ETIMEDOUT fe80::…)
 

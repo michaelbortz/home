@@ -59,7 +59,7 @@
             },
             {
               "type": "tile",
-              "entity": "climate.schlafzimmer_aqara_thermostat",
+              "entity": "climate.schlafzimmer_danfoss_ally",
               "name": {
                 "type": "area"
               },
@@ -70,7 +70,11 @@
                 "current_temperature"
               ],
               "vertical": false,
-              "features_position": "bottom"
+              "features_position": "bottom",
+              "hold_action": {
+                "action": "navigate",
+                "navigation_path": "/config/devices/device/ee478abc6218c2bbf89aac289a57b46c"
+              }
             },
             {
               "type": "tile",
