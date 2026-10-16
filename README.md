@@ -58,7 +58,8 @@ Beim alten Zigbee2MQTT (Edge-Add-on 2.7.2-dev) kam dazu, dass es den W600 nur un
 - In Home Assistant kennt er nur den Modus `heat`, also weder off noch Boost. Im Skript „Modus Tag“ bekommt er seinen Tageswert über die Sicherungsszene.
 - Anlernen: Batterien rein, „o“ 3 s bis **M**, montieren, „o“ kurz (Kopplung), danach „o“ 3 s (Montage abschließen, Anpassungsfahrt). Fällt er nach dem Anlernen wieder raus, „o“ noch einmal kurz drücken und danach in Zigbee2MQTT die Konfiguration erneut anstoßen.
 - Die automatische Anpassungsfahrt (sonst nachts) ist abgeschaltet (`switch.schlafzimmer_danfoss_ally_adaptation_run_settings`). Stattdessen löst `ally-anpassungsfahrt.yaml` sie sonntags um 14 Uhr aus.
-- Batteriegerät: Befehle kommen erst an, wenn er sich das nächste Mal meldet, das kann etwas dauern.
+- Nach dem Anlernen meldete er keine Änderungen von selbst; Home Assistant zeigte deshalb alte Sollwerte. Behoben am 2026-10-16, indem das Melden über `zigbee2mqtt/bridge/request/device/reporting/configure` (Cluster `hvacThermostat`, Endpunkt 1) eingerichtet wurde: `occupiedHeatingSetpoint` (min 0 s, max 3600 s, Änderung 50 = 0,5 °C), `localTemp` (300 s, 3600 s, 20 = 0,2 °C), `pIHeatingDemand` (300 s, 3600 s, 5 %). Nach erneutem Anlernen muss das wiederholt werden.
+- Er verträgt laut Nutzerberichten nur etwa 650 Nachrichten pro Tag, also nicht ständig abfragen.
 
 ### Zigbee2MQTT startet nicht (HOST_FATAL_ERROR, ETIMEDOUT fe80::…)
 
