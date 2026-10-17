@@ -44,34 +44,34 @@
       position: [6, 40]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
 
-    # Handy-Icon unten links, 7 x 11 Pixel, 5 Pixel unter der OUT-Zeile (pico_8 ist 5 Pixel hoch: 40–44)
-    #   y50  .#####.
-    #   y51  #######
-    #   y52  #.....#   Display (schwarz ausgespart)
+    # Handy-Icon unten links, 6 x 10 Pixel, 5 Pixel unter der OUT-Zeile (pico_8 ist 5 Pixel hoch: 40–44)
+    #   y50  .####.
+    #   y51  ######
+    #   y52  #....#   Display (schwarz ausgespart)
     #   ...
-    #   y57  #.....#
-    #   y58  #######
-    #   y59  ###.###   Home-Taste
-    #   y60  .#####.
+    #   y56  #....#
+    #   y57  ######
+    #   y58  ##..##   Home-Taste
+    #   y59  .####.
     - type: rectangle   # obere Kante, Ecken abgerundet
       position: [7, 50]
-      size: [5, 1]
+      size: [4, 1]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
     - type: rectangle   # Gehäuse
       position: [6, 51]
-      size: [7, 9]
+      size: [6, 8]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
     - type: rectangle   # untere Kante, Ecken abgerundet
-      position: [7, 60]
-      size: [5, 1]
+      position: [7, 59]
+      size: [4, 1]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
     - type: rectangle   # Display
       position: [7, 52]
-      size: [5, 6]
+      size: [4, 5]
       color: [0, 0, 0]
     - type: rectangle   # Home-Taste
-      position: [9, 59]
-      size: [1, 1]
+      position: [8, 58]
+      size: [2, 1]
       color: [0, 0, 0]
 
     # Anzahl der Handys im WLAN: Fritzbox-Tracker 'home' und in den letzten 10 Minuten erreichbar.
@@ -80,5 +80,5 @@
     - type: text
       content: "{% set ns = namespace(n=0) %}{% for e in ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] %}{% set t = state_attr(e, 'last_time_reachable') %}{% if is_state(e, 'home') and t and (now() - as_datetime(t | string)).total_seconds() < 600 %}{% set ns.n = ns.n + 1 %}{% endif %}{% endfor %}{{ ns.n }}"
       font: pico_8
-      position: [15, 53]
+      position: [14, 52]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
