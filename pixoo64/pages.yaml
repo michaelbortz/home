@@ -82,3 +82,46 @@
       font: pico_8
       position: [14, 52]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
+
+    # Fenster-Icon rechts neben dem Handy, 11 x 10 Pixel (gleiche Höhe wie das Handy)
+    #   y50   #########
+    #   y51   #...#...#   Scheiben (schwarz ausgespart)
+    #   y52   #...#...#
+    #   y53   #...#...#
+    #   y54   #########
+    #   y55   #...#...#
+    #   y56   #...#...#
+    #   y57   #...#...#
+    #   y58   #########
+    #   y59  ###########  Fensterbank
+    - type: rectangle   # Rahmen
+      position: [21, 50]
+      size: [9, 9]
+      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
+    - type: rectangle   # Scheibe oben links
+      position: [22, 51]
+      size: [3, 3]
+      color: [0, 0, 0]
+    - type: rectangle   # Scheibe oben rechts
+      position: [26, 51]
+      size: [3, 3]
+      color: [0, 0, 0]
+    - type: rectangle   # Scheibe unten links
+      position: [22, 55]
+      size: [3, 3]
+      color: [0, 0, 0]
+    - type: rectangle   # Scheibe unten rechts
+      position: [26, 55]
+      size: [3, 3]
+      color: [0, 0, 0]
+    - type: rectangle   # Fensterbank
+      position: [20, 59]
+      size: [11, 1]
+      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
+
+    # Anzahl offener Fenster (Wohnzimmer, Bad)
+    - type: text
+      content: "{{ ['binary_sensor.0x54ef44100142bf54_contact', 'binary_sensor.fenster_sensor_bad_aqara_contact'] | select('is_state', 'on') | list | count }}"
+      font: pico_8
+      position: [33, 52]
+      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
