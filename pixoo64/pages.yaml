@@ -57,9 +57,11 @@
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
       filled: true
 
-    # Anzahl der Handys im WLAN (Fritzbox-Tracker mit Zustand 'home')
+    # Anzahl der Handys im WLAN: Fritzbox-Tracker 'home' und in den letzten 10 Minuten erreichbar.
+    # Die Zeitprüfung blendet alte Einträge aus, die die Fritzbox weiter als aktiv führt
+    # (z. B. Android mit wechselnder Zufalls-MAC, angemeldet über das devolo-WLAN).
     - type: text
-      content: "{{ ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] | select('is_state', 'home') | list | count }}"
+      content: "{% set ns = namespace(n=0) %}{% for e in ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] %}{% set t = state_attr(e, 'last_time_reachable') %}{% if is_state(e, 'home') and t and (now() - as_datetime(t | string)).total_seconds() < 600 %}{% set ns.n = ns.n + 1 %}{% endif %}{% endfor %}{{ ns.n }}"
       font: pico_8
       position: [13, 49]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
