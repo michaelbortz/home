@@ -44,84 +44,65 @@
       position: [6, 40]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
 
-    # Handy-Icon unten links, 6 x 10 Pixel, 5 Pixel unter der OUT-Zeile (pico_8 ist 5 Pixel hoch: 40–44)
-    #   y50  .####.
-    #   y51  ######
-    #   y52  #....#   Display (schwarz ausgespart)
-    #   ...
-    #   y56  #....#
-    #   y57  ######
-    #   y58  ##..##   Home-Taste
-    #   y59  .####.
-    - type: rectangle   # obere Kante, Ecken abgerundet
-      position: [7, 50]
-      size: [4, 1]
-      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
-    - type: rectangle   # Gehäuse
-      position: [6, 51]
-      size: [6, 8]
-      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
-    - type: rectangle   # untere Kante, Ecken abgerundet
-      position: [7, 59]
-      size: [4, 1]
-      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
-    - type: rectangle   # Display
-      position: [7, 52]
-      size: [4, 5]
-      color: [0, 0, 0]
-    - type: rectangle   # Home-Taste
-      position: [8, 58]
-      size: [2, 1]
-      color: [0, 0, 0]
-
-    # Anzahl der Handys im WLAN: Fritzbox-Tracker 'home' und in den letzten 10 Minuten erreichbar.
-    # Die Zeitprüfung blendet alte Einträge aus, die die Fritzbox weiter als aktiv führt
-    # (z. B. Android mit wechselnder Zufalls-MAC, angemeldet über das devolo-WLAN).
-    - type: text
-      content: "{% set ns = namespace(n=0) %}{% for e in ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] %}{% set t = state_attr(e, 'last_time_reachable') %}{% if is_state(e, 'home') and t and (now() - as_datetime(t | string)).total_seconds() < 600 %}{% set ns.n = ns.n + 1 %}{% endif %}{% endfor %}{{ ns.n }}"
-      font: pico_8
-      position: [14, 52]
-      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
-
-    # Fenster-Icon rechts neben dem Handy, 11 x 10 Pixel (gleiche Höhe wie das Handy)
-    #   y50   #########
-    #   y51   #...#...#   Scheiben (schwarz ausgespart)
-    #   y52   #...#...#
-    #   y53   #...#...#
-    #   y54   #########
-    #   y55   #...#...#
-    #   y56   #...#...#
-    #   y57   #...#...#
-    #   y58   #########
-    #   y59  ###########  Fensterbank
-    - type: rectangle   # Rahmen
-      position: [21, 50]
-      size: [9, 9]
-      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
-    - type: rectangle   # Scheibe oben links
-      position: [22, 51]
-      size: [3, 3]
-      color: [0, 0, 0]
-    - type: rectangle   # Scheibe oben rechts
-      position: [26, 51]
-      size: [3, 3]
-      color: [0, 0, 0]
-    - type: rectangle   # Scheibe unten links
-      position: [22, 55]
-      size: [3, 3]
-      color: [0, 0, 0]
-    - type: rectangle   # Scheibe unten rechts
-      position: [26, 55]
-      size: [3, 3]
-      color: [0, 0, 0]
-    - type: rectangle   # Fensterbank
-      position: [20, 59]
-      size: [11, 1]
-      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
-
-    # Anzahl offener Fenster (Wohnzimmer, Bad)
-    - type: text
-      content: "{{ ['binary_sensor.0x54ef44100142bf54_contact', 'binary_sensor.fenster_sensor_bad_aqara_contact'] | select('is_state', 'on') | list | count }}"
-      font: pico_8
-      position: [33, 52]
-      color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
+    # Statuszeile unten: Handy + Anzahl im WLAN, gekipptes Fenster + Anzahl offen, 10 Pixel hoch (y50–59).
+    # Eine einzige Vorlage zeichnet beide Icons Pixel für Pixel ('#' = Farbe) und setzt die Zeile
+    # mittig unter die Temperaturzeilen, auch wenn eine Zahl zweistellig wird.
+    - type: templatable
+      template: |-
+        {#- Statuszeile unten: Handy + Anzahl im WLAN, Fenster (gekippt) + Anzahl offen.
+            Wird als Ganzes mittig unter die Temperaturzeilen gesetzt (die reichen von x6 bis x55, Mitte 30,5).
+            pico_8: jedes Zeichen 3 Pixel breit + 1 Pixel Abstand. -#}
+        {%- set c = states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list -%}
+        {%- set phones = ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] -%}
+        {%- set windows = ['binary_sensor.0x54ef44100142bf54_contact', 'binary_sensor.fenster_sensor_bad_aqara_contact'] -%}
+        {#- Handy zählt, wenn 'home' und in den letzten 10 Minuten erreichbar (blendet alte Fritzbox-Einträge aus) -#}
+        {%- set ns = namespace(n=0, out=[]) -%}
+        {%- for e in phones -%}
+          {%- set t = state_attr(e, 'last_time_reachable') -%}
+          {%- if is_state(e, 'home') and t and (now() - as_datetime(t | string)).total_seconds() < 600 -%}{%- set ns.n = ns.n + 1 -%}{%- endif -%}
+        {%- endfor -%}
+        {%- set n_phones = ns.n | string -%}
+        {%- set n_windows = windows | select('is_state', 'on') | list | count | string -%}
+        {%- set phone = [
+          '.####.',
+          '######',
+          '#....#',
+          '#....#',
+          '#....#',
+          '#....#',
+          '#....#',
+          '######',
+          '##..##',
+          '.####.'] -%}
+        {%- set window = [
+          '########...',
+          '#......#...',
+          '#...#######',
+          '#..##....##',
+          '#..#.....#.',
+          '#.##....##.',
+          '#.#.....#..',
+          '##.....##..',
+          '#.######...',
+          '########...'] -%}
+        {%- set y0 = 50 -%}
+        {%- set w1 = n_phones | length * 4 - 1 -%}
+        {%- set w2 = n_windows | length * 4 - 1 -%}
+        {#- Breite: Handy 6, Abstand 2, Zahl, Abstand 3, Fenster 11, Abstand 2, Zahl -#}
+        {%- set total = 6 + 2 + w1 + 3 + 11 + 2 + w2 -%}
+        {%- set x0 = ((61 - total) / 2) | round(0, 'ceil') | int -%}
+        {%- set x_win = x0 + 6 + 2 + w1 + 3 -%}
+        {%- for icon in [[phone, x0], [window, x_win]] -%}
+          {%- for row in icon[0] -%}
+            {%- set y = y0 + loop.index0 -%}
+            {%- for ch in row -%}
+              {%- if ch == '#' -%}
+                {%- set ns.out = ns.out + [{'type': 'rectangle', 'position': [icon[1] + loop.index0, y], 'size': [1, 1], 'color': c}] -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endfor -%}
+        {%- set ns.out = ns.out + [
+          {'type': 'text', 'content': n_phones, 'font': 'pico_8', 'position': [x0 + 8, y0 + 2], 'color': c},
+          {'type': 'text', 'content': n_windows, 'font': 'pico_8', 'position': [x_win + 13, y0 + 2], 'color': c}] -%}
+        {{ ns.out }}
