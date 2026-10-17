@@ -1,4 +1,4 @@
-# Divoom Pixoo 64 (Wohnzimmer) – Seitenkonfiguration
+﻿# Divoom Pixoo 64 (Wohnzimmer) – Seitenkonfiguration
 #
 # Integration: divoom_pixoo (https://github.com/gickowtf/pixoo-homeassistant)
 # Eintragen unter: Einstellungen → Geräte & Dienste → Divoom Pixoo 64 → Konfigurieren → pages_data
@@ -59,7 +59,7 @@
 
     # Anzahl der Handys im WLAN (Fritzbox-Tracker mit Zustand 'home')
     - type: text
-      content: "{{ ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.fairphone_5_5g_2', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] | select('is_state', 'home') | list | count }}"
+      content: "{{ ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] | select('is_state', 'home') | list | count }}"
       font: pico_8
       position: [13, 49]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
