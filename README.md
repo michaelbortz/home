@@ -67,6 +67,16 @@ Beim alten Zigbee2MQTT (Edge-Add-on 2.7.2-dev) kam dazu, dass es den W600 nur un
 
 **Lösung (2026-10-13):** Verbindung per IPv4 (`tcp://192.168.178.75:6638`) mit fester Adresse in der Fritzbox, siehe `zigbee2mqtt/addon-options.yaml`.
 
+### Pixoo 64 nach Neustart mit 100 % Helligkeit und falscher Uhrzeit (2026-10-22)
+
+**Symptom:** Der Pixoo leuchtete tagsüber mit 100 % statt 30 %, und die Uhrzeit stimmte eine Weile nicht.
+
+**Ursache:** Am 2026-10-22 war `light.divoom_pixoo_64_light` fünfmal kurz `unavailable` (11:53, 13:54, 14:07, 15:02, 16:09 Ortszeit). Das sind Neustarts oder WLAN-Aussetzer. Nach einem Neustart steht der Pixoo auf 100 %, und die Uhr stimmt erst, wenn er wieder mit dem Divoom-Server (`app.divoom-gz.com`) verbunden ist. Die Helligkeitsautomation löste nur bei `off` → `on` aus, nach einem Neustart wechselt der Status aber von `unavailable` nach `on`.
+
+**Lösung:** Der Trigger in `automations/pixoo64-helligkeit.yaml` reagiert jetzt auf `off` und `unavailable` → `on`. Die Helligkeit wurde von Hand auf 30 % gesetzt.
+
+**PHP2Shell:** Am Vortag (2026-10-21) kamen die Notfall-Patches für PHP2Shell heraus (CVE-2026-109618/-109619, kritische RCE-Lücken in PHP). Der Pixoo selbst nutzt kein PHP. Möglich, aber nicht belegt ist, dass Divoom deswegen Server gepatcht hat und die Zeitsynchronisierung davon betroffen war. Eine Divoom-Störung war nicht gemeldet, und der Server antwortete am Nachmittag normal. Gehen die Ausfälle weiter, eher WLAN oder Netzteil des Pixoo prüfen.
+
 ## Was Claude hier tut
 
 - Zustände von Entitäten abfragen und nicht erreichbare Geräte finden
