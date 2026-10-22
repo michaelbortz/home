@@ -2,7 +2,9 @@
 #
 # Ab Sonnenuntergang 1 %, ab Sonnenaufgang 30 %.
 # Schaltet das Display nie ein: Ist es aus (z. B. über "Fernbedienung Power Off"), passiert nichts.
-# Wird es eingeschaltet, bekommt es sofort die zum Sonnenstand passende Helligkeit.
+# Wird es eingeschaltet oder ist es nach einem Neustart wieder erreichbar
+# (unavailable -> on, sonst stünde es auf 100 %), bekommt es sofort die zum
+# Sonnenstand passende Helligkeit.
 
 alias: "Pixoo 64: Helligkeit nach Sonnenstand regeln"
 description: >-
@@ -18,7 +20,9 @@ triggers:
     id: tag
   - trigger: state
     entity_id: light.divoom_pixoo_64_light
-    from: "off"
+    from:
+      - "off"
+      - "unavailable"
     to: "on"
     id: eingeschaltet
 conditions:
