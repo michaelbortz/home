@@ -30,12 +30,23 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 |---|---|
 | `pixoo64/pages.yaml` | Seiten der Divoom Pixoo 64 im Wohnzimmer (Uhr, Datum, Wetter, Temperaturen, Handys im WLAN, offene Fenster) |
 | `automations/pixoo64-helligkeit.yaml` | Pixoo-Helligkeit nach Sonnenstand (1 % nachts, 30 % tagsüber, schaltet nie ein) |
+| `automations/wassersensor.yaml` | Wasserleck-Meldung über ntfy mit höchster Priorität |
+| `automations/steckdose-5-ausschalten.yaml` | Steckdose 5 nach eingestellter Zeit ausschalten, Meldung über ntfy |
 | `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
 | `dashboards/` | Dashboards im Speichermodus als JSON, wie in Home Assistant gespeichert (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
 | `zigbee2mqtt/addon-options.yaml` | Add-on-Optionen von Zigbee2MQTT (Verbindung zum Zigbee-Dongle) |
 | `temp/` | Lokale Ablage für Logs und Ähnliches, wird nicht eingecheckt |
 
 Wenn in Home Assistant etwas geändert wird, die passende Datei hier mit aktualisieren.
+
+## Benachrichtigungen
+
+- **Beide** über die ntfy-App (Pixel 8 Pro und FP5 haben dasselbe Topic abonniert). Integration „ntfy“ mit Server `https://ntfy.sh`, Entität `notify.handy_frau`. Senden mit `ntfy.publish` (Titel, Priorität 1–5, Tags). Das Topic steht in der Integration und in der ntfy-App. Es ist geheim, weil jeder, der es kennt, mitlesen und senden kann, deshalb steht es nicht hier.
+- Die HA-App auf dem FP5 stellte nicht zuverlässig zu (meldet sich nur sporadisch). Deshalb seit 2026-10-24 ntfy. `notify.mobile_app_*` wird von keiner Automation mehr genutzt, und neue Meldungen sollen nur über ntfy gehen, sonst kommen sie bei Micha doppelt.
+- **Neues Handy dazu:** ntfy-App aus dem Play Store installieren, über **+** das Topic mit Server `ntfy.sh` abonnieren und die Akku-Optimierung für ntfy ausschalten. In Home Assistant muss nichts geändert werden.
+- **Prioritäten:** 5 (max) für Alarme wie Wasserleck, ohne Angabe 3 (default) für Hinweise wie die Steckdose. Wie laut eine Priorität ankommt, wird in der ntfy-App eingestellt.
+- **Einrichtung:** Eingerichtet wurde per REST-API über den Config Flow (`/api/config/config_entries/flow` mit `handler: ntfy`, danach `subentries/flow` mit `add_topic`). In der Oberfläche geht es über **Einstellungen → Geräte & Dienste → ntfy → Thema hinzufügen**. ntfy.sh ohne Konto erlaubt 250 Nachrichten pro Tag und hält sie 12 Stunden vor (Sensoren `sensor.ntfy_sh_*`).
+- **Testen ohne Alarm:** `ntfy.publish` direkt aufrufen, z. B. `POST /api/services/ntfy/publish` mit `{"entity_id": "notify.handy_frau", "title": "Test", "message": "…"}`. Die Automationen nicht auslösen, sonst geht eine falsche WASSERLECK-Meldung raus.
 
 ## Bekannte Probleme und Lösungen
 

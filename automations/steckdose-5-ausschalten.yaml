@@ -1,0 +1,36 @@
+# Automation: automation.steckdose_automatisches_ausschalten_mit_timer_helfer (id 1770902728841)
+#
+# Schaltet Steckdose 5 nach der in input_number.steckdose_5_ausschalten_nach_x_minuten
+# eingestellten Zeit aus, wenn input_boolean.steckdose_5_automatisch_ausschalten an ist.
+# Meldung über ntfy (notify.handy_frau, von beiden abonniert, seit 2026-10-24;
+# vorher HA-App ans Pixel 8 Pro).
+
+alias: "Steckdose: Automatisches Ausschalten mit Timer-Helfer"
+description: Schaltet die Steckdose nach X Stunden aus, wenn der Schutz-Helfer aktiv ist
+triggers:
+  - trigger: state
+    entity_id: switch.steckdose_5
+    from: "off"
+    to: "on"
+conditions:
+  - condition: state
+    entity_id: input_boolean.steckdose_5_automatisch_ausschalten
+    state: "on"
+actions:
+  - delay:
+      minutes: "{{ states('input_number.steckdose_5_ausschalten_nach_x_minuten') | float | int }}"
+  - condition: state
+    entity_id: switch.steckdose_5
+    state: "on"
+  - action: switch.turn_off
+    target:
+      entity_id: switch.steckdose_5
+  - action: ntfy.publish
+    target:
+      entity_id: notify.handy_frau
+    data:
+      title: Sicherheits-Ausschaltung
+      message: Die Steckdose wurde nach Ablauf der Zeit automatisch ausgeschaltet.
+      tags:
+        - electric_plug
+mode: restart

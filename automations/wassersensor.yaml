@@ -1,0 +1,28 @@
+# Automation: automation.neue_automation_2 (id 1770282350009)
+#
+# Meldet ein Wasserleck, sobald der Aqara-Wassersensor feucht wird.
+# Meldung über ntfy (notify.handy_frau, höchste Priorität), das Micha und seine
+# Frau beide abonniert haben. Bis 2026-10-24 ging es über die HA-App an Pixel 8 Pro
+# und FP5; auf dem FP5 stellte die nicht zuverlässig zu.
+
+alias: Wassersensor
+description: ""
+triggers:
+  - type: moist
+    device_id: cec9b2450c9f006d0d86d4e36ce1c3e4
+    entity_id: ffd5005b48925d413015f80d6ec27dc9
+    domain: binary_sensor
+    trigger: device
+conditions: []
+actions:
+  - action: ntfy.publish
+    target:
+      entity_id: notify.handy_frau
+    data:
+      title: WASSERLECK
+      message: Wasserleck - Sensor feucht
+      priority: "5"
+      tags:
+        - rotating_light
+        - droplet
+mode: single
