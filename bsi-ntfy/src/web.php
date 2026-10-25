@@ -270,7 +270,7 @@ function page_login(): never
         $body .= '<form method="post" class="card narrow">' . csrf_field() . '<input type="hidden" name="action" value="login">'
             . '<label>Benutzername<input name="username" autocomplete="username" required autofocus></label>'
             . '<label>Passwort<input type="password" name="password" autocomplete="current-password" required></label>'
-            . '<label>Code aus der Authenticator-App<input name="code" inputmode="numeric" autocomplete="one-time-code" data-otp required></label>'
+            . '<label>Code aus der Authenticator-App<input name="code" autocomplete="off" data-otp required></label>'
             . '<button>Anmelden</button></form><script src="/otp.js"></script>';
     }
     page('Anmelden – BSI-Warnungen', $body);
@@ -294,7 +294,7 @@ function page_enroll(string $token): never
         . '<label>Benutzername<input name="username" autocomplete="username" required></label>'
         . '<label>Passwort (mind. 12 Zeichen)<input type="password" name="password" minlength="12" autocomplete="new-password" required></label>'
         . '<label>Passwort wiederholen<input type="password" name="password2" minlength="12" autocomplete="new-password" required></label>'
-        . '<label>Code aus der App<input name="code" inputmode="numeric" autocomplete="one-time-code" data-otp required></label>'
+        . '<label>Code aus der App<input name="code" autocomplete="off" data-otp required></label>'
         . '<button>Einrichten</button></form>'
         . '<script src="/qrcode.min.js"></script><script src="/enroll.js"></script><script src="/otp.js"></script>';
     page('Einrichten – BSI-Warnungen', $body);
