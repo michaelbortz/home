@@ -144,13 +144,7 @@ function handle_post(bool $auth): never
 
         case 'test':
             try {
-                ntfy_send([
-                    'title' => '[TEST] BSI-Warnungen',
-                    'message' => 'Testnachricht von ntfy.fbortz.de – die Zustellung funktioniert.',
-                    'priority' => 3,
-                    'tags' => ['white_check_mark', 'bsi'],
-                ]);
-                flash('Testnachricht verschickt.');
+                flash('Testnachricht verschickt: ' . send_test_advisory());
             } catch (Throwable $e) {
                 flash('Test fehlgeschlagen: ' . $e->getMessage(), 'error');
             }
@@ -344,7 +338,7 @@ function page_dashboard(): never
         . '<p>Letzter Abruf: ' . ($lastPoll ? date('d.m.Y H:i', $lastPoll) : 'noch nie') . ' – ' . h($s('last_poll_status') ?: '–') . '</p>'
         . ($s('paused') === '1' ? '<p class="bad">Meldungen sind pausiert.</p>' : '')
         . '<p>' . $subscribe . '</p>'
-        . '<div class="row"><form method="post">' . csrf_field() . '<input type="hidden" name="action" value="test"><button>Testnachricht senden</button></form>'
+        . '<div class="row"><form method="post">' . csrf_field() . '<input type="hidden" name="action" value="test"><button title="Schickt die neueste Warnung, die zum Filter passt">Testnachricht senden</button></form>'
         . '<form method="post">' . csrf_field() . '<input type="hidden" name="action" value="poll"><button class="secondary">Jetzt abrufen</button></form></div></section>'
 
         . '<form method="post" class="card">' . csrf_field() . '<input type="hidden" name="action" value="save"><h2>Filter</h2>'

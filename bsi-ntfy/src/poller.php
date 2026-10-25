@@ -156,11 +156,14 @@ function parse_csaf(array $d): array
     $doc = $d['document'] ?? throw new RuntimeException('Kein CSAF-Dokument');
     $tracking = $doc['tracking'];
 
-    $summary = '';
+    // summary = "Angriff" (was ein Angreifer tun kann), description = "Produktbeschreibung"
+    $summary = $description = '';
     foreach ($doc['notes'] ?? [] as $n) {
-        if (($n['category'] ?? '') === 'summary') {
+        $cat = $n['category'] ?? '';
+        if ($cat === 'summary' && $summary === '') {
             $summary = $n['text'];
-            break;
+        } elseif ($cat === 'description' && $description === '') {
+            $description = $n['text'];
         }
     }
     $url = '';
@@ -195,6 +198,7 @@ function parse_csaf(array $d): array
         'severity' => strtolower($doc['aggregate_severity']['text'] ?? 'unbekannt'),
         'products' => implode(' | ', array_keys($names)),
         'summary' => $summary,
+        'description' => $description,
         'revision' => $revision,
         'cves' => $cves,
         'url' => $url,
@@ -239,7 +243,32 @@ function keyword_hit(string $haystack, array $keywords): bool
     return false;
 }
 
-function send_advisory(array $adv): void
+/** Echte Warnung als Testnachricht: die neueste, die zum aktuellen Filter passt. */
+function send_test_advisory(): string
+{
+    $filter = current_filter();
+    $rows = db()->query('SELECT * FROM advisories ORDER BY seen_at DESC, released_at DESC LIMIT 400')->fetchAll();
+    $pick = null;
+    foreach ($rows as $r) {
+        if (advisory_matches($r, $filter)) {
+            $pick = $r;
+            break;
+        }
+    }
+    $pick ??= $rows[0] ?? throw new RuntimeException('Noch keine Warnungen abgerufen');
+    if (!preg_match('/^WID-SEC-W-(\d{4})-\d+$/', $pick['id'], $m)) {
+        throw new RuntimeException("Unerwartete Kennung {$pick['id']}");
+    }
+    $res = http_request(CSAF_BASE . $m[1] . '/' . strtolower($pick['id']) . '.json');
+    if ($res['status'] !== 200) {
+        throw new RuntimeException("BSI lieferte HTTP {$res['status']}");
+    }
+    $adv = parse_csaf(json_decode($res['body'], true, 64, JSON_THROW_ON_ERROR));
+    send_advisory($adv, true);
+    return $adv['title'];
+}
+
+function send_advisory(array $adv, bool $test = false): void
 {
     $isUpdate = $adv['version'] !== '1';
     $lines = [];
@@ -249,14 +278,20 @@ function send_advisory(array $adv): void
     if ($adv['summary'] !== '') {
         $lines[] = $adv['summary'];
     }
+    if ($adv['description'] !== '') {
+        $lines[] = "Produkt: {$adv['description']}";
+    }
     if ($adv['cves']) {
         $cves = array_slice($adv['cves'], 0, 6);
         $more = count($adv['cves']) - count($cves);
         $lines[] = implode(', ', $cves) . ($more > 0 ? " (+$more)" : '');
     }
+    if ($adv['url'] !== '') {
+        $lines[] = $adv['url'];
+    }
     $sev = strtoupper($adv['severity']);
     $msg = [
-        'title' => ($isUpdate ? "[$sev · Update] " : "[$sev] ") . $adv['title'],
+        'title' => ($test ? '[TEST] ' : '') . ($isUpdate ? "[$sev · Update] " : "[$sev] ") . $adv['title'],
         'message' => implode("\n\n", $lines) ?: $adv['id'],
         'priority' => NTFY_PRIORITY[$adv['severity']] ?? 3,
         'tags' => [$adv['severity'] === 'kritisch' ? 'rotating_light' : 'warning', 'bsi'],
