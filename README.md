@@ -35,6 +35,7 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 | `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
 | `dashboards/` | Dashboards im Speichermodus als JSON, wie in Home Assistant gespeichert (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
 | `zigbee2mqtt/addon-options.yaml` | Add-on-Optionen von Zigbee2MQTT (Verbindung zum Zigbee-Dongle) |
+| `bsi-ntfy/` | Beruflich: BSI-Sicherheitswarnungen (CERT-Bund WID) per ntfy, läuft auf dem Hetzner-Webhosting unter https://ntfy.fbortz.de, eigener Topic. Details in `bsi-ntfy/README.md` |
 | `temp/` | Lokale Ablage für Logs und Ähnliches, wird nicht eingecheckt |
 
 Wenn in Home Assistant etwas geändert wird, die passende Datei hier mit aktualisieren.

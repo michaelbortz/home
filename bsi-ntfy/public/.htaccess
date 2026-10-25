@@ -1,0 +1,14 @@
+# Hebt das "Require all denied" aus ntfy/.htaccess für diesen Ordner wieder auf
+Require all granted
+Options -Indexes
+DirectoryIndex index.php
+
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>

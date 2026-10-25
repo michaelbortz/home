@@ -1,0 +1,3 @@
+# Schutz für src/, bin/ und data/, solange die Domain noch auf ntfy/ statt ntfy/public zeigt.
+# Bleibt auch danach als zweite Absicherung liegen.
+Require all denied
