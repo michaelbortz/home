@@ -50,7 +50,8 @@ function totp_code(string $secret, int $step): string
 /** Liefert den gültigen Zeitschritt (±1 Schritt Toleranz) oder null. */
 function totp_verify(string $secret, string $code, int $lastStep = 0): ?int
 {
-    $code = preg_replace('/\s+/', '', $code);
+    // Eingefügte Codes enthalten oft Leerzeichen, Bindestriche oder Zeilenumbrüche
+    $code = preg_replace('/\D+/', '', $code);
     if (!preg_match('/^\d{6}$/', $code)) {
         return null;
     }
