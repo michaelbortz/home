@@ -73,6 +73,12 @@ Beim alten Zigbee2MQTT (Edge-Add-on 2.7.2-dev) kam dazu, dass es den W600 nur un
 - Nach dem Anlernen meldete er keine Änderungen von selbst; Home Assistant zeigte deshalb alte Sollwerte. Behoben am 2026-10-16, indem das Melden über `zigbee2mqtt/bridge/request/device/reporting/configure` (Cluster `hvacThermostat`, Endpunkt 1) eingerichtet wurde: `occupiedHeatingSetpoint` (min 0 s, max 3600 s, Änderung 50 = 0,5 °C), `localTemp` (300 s, 3600 s, 20 = 0,2 °C), `pIHeatingDemand` (300 s, 3600 s, 5 %). Nach erneutem Anlernen muss das wiederholt werden.
 - Er verträgt laut Nutzerberichten nur etwa 650 Nachrichten pro Tag, also nicht ständig abfragen.
 
+### Homematic-Thermostat `climate.thermostat_schlafzimmer` ist absichtlich nicht erreichbar
+
+Das ist der frühere Schlafzimmer-Thermostat, ein HmIP-eTRV-E (`002A9F29B3A17F`, über die CCU3). Er ist abgebaut und soll **ins Bad**, sobald der Monteur dort war. Deshalb bleibt er in der CCU3 angelernt und wird nicht gelöscht. Seit 2026-10-13 ist er „unavailable“, das ist erwartet. Keine Automation, kein Skript und kein Dashboard nutzt ihn.
+
+Wenn er im Bad hängt: in der CCU3 und in Home Assistant umbenennen (z. B. `climate.thermostat_bad`). Dann entscheiden, ob er in die Heizungsskripte, in die Szene `heizung_tag_backup` und in `tag-werte-sichern.yaml` aufgenommen wird, und die Automation „Bad Heizung ein wenn Fenster zu“ prüfen.
+
 ### Zigbee2MQTT startet nicht (HOST_FATAL_ERROR, ETIMEDOUT fe80::…)
 
 **Ursache:** Zigbee2MQTT erreichte den SONOFF Dongle Max über eine IPv6-Link-Local-Adresse. Nach einem Neustart des Dongles war sie nicht mehr erreichbar.
