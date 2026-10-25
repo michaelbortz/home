@@ -15,6 +15,8 @@ Claude Code greift von hier aus über die Home-Assistant-REST-API auf den Server
     ```
   - Den Token **niemals** ins Repository einchecken.
 
+- **Kein SSH:** Home Assistant läuft auf einem Raspberry Pi 4 (HA OS) unter `192.168.178.76`. Das SSH-Add-on ist nicht installiert und wurde bisher nicht gebraucht. Der alte ssh-Eintrag `Raspberry-Fullarmour` (`192.168.178.61`) ist derselbe Pi aus der Zeit vor Home Assistant und gilt nicht mehr.
+
 Kurzer Verbindungstest:
 
 ```powershell
@@ -94,6 +96,18 @@ Wenn er im Bad hängt: in der CCU3 und in Home Assistant umbenennen (z. B. `clim
 **Lösung:** Der Trigger in `automations/pixoo64-helligkeit.yaml` reagiert jetzt auf `off` und `unavailable` → `on`. Die Helligkeit wurde von Hand auf 30 % gesetzt.
 
 **PHP2Shell:** Am Vortag (2026-10-21) kamen die Notfall-Patches für PHP2Shell heraus (CVE-2026-109618/-109619, kritische RCE-Lücken in PHP). Der Pixoo selbst nutzt kein PHP. Möglich, aber nicht belegt ist, dass Divoom deswegen Server gepatcht hat und die Zeitsynchronisierung davon betroffen war. Eine Divoom-Störung war nicht gemeldet, und der Server antwortete am Nachmittag normal. Gehen die Ausfälle weiter, eher WLAN oder Netzteil des Pixoo prüfen.
+
+## Ideen für später
+
+### Lokale Sprachsteuerung (Stand 2026-10-25)
+
+Ziel: Sprachbefehle ohne Cloud und **ohne zusätzlichen Rechner**, alles soll auf dem Raspberry Pi 4 mit Home Assistant laufen. Assist ist schon aktiv, die Sprachausgabe läuft aber noch über Google Translate (Cloud).
+
+- **Grundlage für beide Varianten:** die Add-ons **Speech-to-Phrase** (Sprache zu Text) und **Piper** (Text zu Sprache, deutsche Stimme z. B. „thorsten“), dazu ein Assistent mit Sprache Deutsch und Agent „Home Assistant“. Speech-to-Phrase erkennt nur Befehle für die eigenen Geräte, das aber fast sofort. Whisper wäre auf dem Pi 4 zu langsam und für Deutsch zu ungenau. Ein lokales LLM (Ollama) geht auf dem Pi 4 nicht.
+- **Variante B, zuerst:** keine neue Hardware. Die Home-Assistant-App auf Pixel 8 Pro und FP5 als Standard-Assistent einstellen und Assist per langem Tastendruck starten. Ein Weckwort gibt es so nicht, dafür geht es überall.
+- **Variante A, wenn ein Weckwort gewünscht ist:** eine USB-Konferenzfreisprechanlage (Jabra Speak 410/510, Anker PowerConf) direkt an den Pi und die Add-ons „Assist Microphone“ und „openWakeWord“. Das geht nur in dem Raum, in dem der Pi steht, und braucht dauerhaft Rechenzeit, also am besten 4 GB RAM oder mehr.
+- **Offen:** Wo steht der Pi, und wie viel RAM hat er? Das steht unter Einstellungen → System → Hardware.
+- Installieren müssen wir die Add-ons in der Oberfläche, denn der API-Token kommt nicht an die Supervisor-Schnittstelle (401).
 
 ## Was Claude hier tut
 
