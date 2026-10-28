@@ -244,7 +244,7 @@ function page(string $title, string $body): never
     echo '<!doctype html><html lang="de"><head><meta charset="utf-8">'
         . '<meta name="viewport" content="width=device-width, initial-scale=1">'
         . '<meta name="robots" content="noindex, nofollow">'
-        . '<title>' . h($title) . '</title><link rel="stylesheet" href="/style.css"></head><body>'
+        . '<title>' . h($title) . '</title><link rel="stylesheet" href="/style.css?v=' . filemtime(APP_DIR . '/public/style.css') . '"></head><body>'
         . '<main>' . $flash . $body . '</main></body></html>';
     exit;
 }
@@ -315,11 +315,15 @@ function page_dashboard(): never
     $recent = array_filter($rows, fn($r) => $r['seen_at'] >= $since);
     $wouldMatch = count(array_filter($recent, fn($r) => advisory_matches($r, $filter)));
 
+    // Die neuesten 80 immer, ältere Treffer nur für „Nur passende anzeigen“ (class extra, per CSS versteckt)
     $table = '';
-    foreach (array_slice($rows, 0, 80) as $r) {
+    foreach ($rows as $i => $r) {
         $match = advisory_matches($r, $filter);
+        if ($i >= 80 && !$match) {
+            continue;
+        }
         $title = $r['url'] !== '' ? '<a href="' . h($r['url']) . '" rel="noreferrer" target="_blank">' . h($r['title']) . '</a>' : h($r['title']);
-        $table .= '<tr class="' . ($match ? 'hit' : '') . '"><td>' . h(substr($r['released_at'], 0, 10)) . '</td>'
+        $table .= '<tr class="' . ($match ? 'hit' : '') . ($i >= 80 ? ' extra' : '') . '"><td>' . h(substr($r['released_at'], 0, 10)) . '</td>'
             . '<td><span class="sev ' . h($r['severity']) . '">' . h($r['severity']) . '</span></td>'
             . '<td>' . $title . ($r['version'] !== '1' ? ' <span class="muted">(Update v' . h($r['version']) . ')</span>' : '')
             . '<div class="muted small">' . h(mb_strimwidth($r['products'], 0, 160, '…')) . '</div></td>'
@@ -360,6 +364,7 @@ function page_dashboard(): never
 
         . '<section class="card"><h2>Vorschau</h2>'
         . '<p>Mit dem aktuellen Filter hätten in den letzten 30 Tagen <strong>' . $wouldMatch . '</strong> von ' . count($recent) . ' Warnungen eine Meldung ausgelöst. Gespeichert wird erst mit „Speichern“.</p>'
+        . '<label class="check"><input type="checkbox" id="only-hits"> Nur passende anzeigen</label>'
         . '<div class="scroll"><table><thead><tr><th>Stand</th><th>Risiko</th><th>Warnung</th><th>Filter</th><th>Gemeldet</th></tr></thead><tbody>'
         . ($table ?: '<tr><td colspan="5" class="muted">Noch keine Daten – „Jetzt abrufen“ drücken.</td></tr>') . '</tbody></table></div></section>'
 

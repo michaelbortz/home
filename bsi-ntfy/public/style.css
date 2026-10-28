@@ -44,6 +44,8 @@ table { width: 100%; border-collapse: collapse; font-size: 14px; }
 th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
 td:first-child { white-space: nowrap; }
 tr.hit { background: var(--hit); }
+/* Vorschau: Checkbox „Nur passende anzeigen“ */
+.card:not(:has(#only-hits:checked)) tr.extra, .card:has(#only-hits:checked) tbody tr:not(.hit) { display: none; }
 a { color: var(--accent); }
 .sev { font-weight: 600; }
 .sev.niedrig { color: var(--sev-niedrig); } .sev.mittel { color: var(--sev-mittel); }
