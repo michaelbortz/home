@@ -9,7 +9,7 @@
 # Zigbee2MQTT startete nicht (HOST_FATAL_ERROR).
 #
 # Bis 2026-10-13 lief das Edge-Add-on (Stand 2.7.2-dev). Es ist gestoppt (Start: manuell) und
-# kann entfernt werden. Grund für den Wechsel: Die alte Version kannte beim Aqara W600 weder
+# kann entfernt werden (am 2026-11-02 noch installiert, stabiles Add-on dann 2.14.3-1). Grund für den Wechsel: Die alte Version kannte beim Aqara W600 weder
 # system_mode noch override_active, nach Bedienung am Gerät ignorierte er Home Assistant.
 
 data_path: /config/zigbee2mqtt

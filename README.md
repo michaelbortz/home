@@ -97,6 +97,18 @@ Wenn er im Bad hängt: in der CCU3 und in Home Assistant umbenennen (z. B. `clim
 
 **PHP2Shell:** Am Vortag (2026-10-21) kamen die Notfall-Patches für PHP2Shell heraus (CVE-2026-109618/-109619, kritische RCE-Lücken in PHP). Der Pixoo selbst nutzt kein PHP. Möglich, aber nicht belegt ist, dass Divoom deswegen Server gepatcht hat und die Zeitsynchronisierung davon betroffen war. Eine Divoom-Störung war nicht gemeldet, und der Server antwortete am Nachmittag normal. Gehen die Ausfälle weiter, eher WLAN oder Netzteil des Pixoo prüfen.
 
+### Handy am GL-BE3600 nicht als online erkannt (2026-11-02)
+
+**Symptom:** Michas Pixel 8 Pro wurde vom Pixoo nicht als „im WLAN“ gezählt, sobald es im Netz `GL-BE3600-208-MLO` des zweiten Routers hing.
+
+**Ursache:** Der GL-BE3600 läuft richtig als Access Point. Das Handy hat aber eine **zufällige MAC pro WLAN** verwendet. In der Fritzbox wurde es dadurch zu mehreren Geräten: „Micha“ im Fritzbox-WLAN und „Zwinker-der-Zwerg-Pro“ am GL. Das Pixoo kannte nur den ersten Eintrag.
+
+**Lösung:** Am Handy ist in beiden WLANs „Geräte-MAC verwenden“ eingestellt (WLAN → Zahnrad → Datenschutz). Der Tracker ist jetzt `device_tracker.zwinker_der_zwerg_pro` mit der MAC `5C:33:7B:F0:63:9D` und steht so in `pixoo64/pages.yaml`. Die alten Fritzbox-Einträge mit zufälliger MAC (`.66`, `.83`, `.88`) können gelöscht werden. Bei einem neuen Handy auch zuerst die Geräte-MAC einstellen.
+
+**Nebenbei (2026-11-02):** Das Fenster-Icon in der Statuszeile ist jetzt 7 Pixel breit: mit Sprossenkreuz, wenn alle Fenster zu sind, als leerer Rahmen (`window_open`), sobald eins offen ist. Die Abstände sind daran angepasst.
+
+**Hinweis zum Ändern per API:** Die Pixoo-Seiten stehen im Options-Flow im Feld `default`, nicht in `suggested_value`. Die Antwort muss als UTF-8 gelesen werden, sonst wird „°“ zu „Â°“. Ein Fehler beim Speichern (leere `pages_data`) bringt die Integration zum Absturz, und sie lässt sich erst nach einem Neustart von HA wieder laden.
+
 ## Ideen für später
 
 ### Lokale Sprachsteuerung (Stand 2026-10-25)
