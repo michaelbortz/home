@@ -53,8 +53,10 @@
             Wird als Ganzes mittig unter die Temperaturzeilen gesetzt (die reichen von x6 bis x55, Mitte 30,5).
             pico_8: jedes Zeichen 3 Pixel breit + 1 Pixel Abstand. -#}
         {%- set c = states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list -%}
-        {%- set phones = ['device_tracker.michahandy_michahandypixel8pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] -%}
+        {%- set phones = ['device_tracker.zwinker_der_zwerg_pro', 'device_tracker.manufairphone', 'device_tracker.manuhandy', 'device_tracker.huawei_p8', 'device_tracker.iphone', 'device_tracker.pixel_4a_5g'] -%}
         {%- set windows = ['binary_sensor.0x54ef44100142bf54_contact', 'binary_sensor.fenster_sensor_bad_aqara_contact'] -%}
+        {#- Michas Pixel 8 Pro = zwinker_der_zwerg_pro (Geräte-MAC 5C:33:7B:F0:63:9D, in allen WLANs; zufällige MAC
+            gab pro WLAN einen eigenen Fritzbox-Eintrag, am GL-BE3600 wurde es dann nicht erkannt) -#}
         {#- Handy zählt, wenn 'home' und in den letzten 10 Minuten erreichbar (blendet alte Fritzbox-Einträge aus) -#}
         {%- set ns = namespace(n=0, out=[]) -%}
         {%- for e in phones -%}
