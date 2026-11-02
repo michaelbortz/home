@@ -44,12 +44,12 @@
       position: [6, 40]
       color: "{{ states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list }}"
 
-    # Statuszeile unten: Handy + Anzahl im WLAN, gekipptes Fenster + Anzahl offen, 10 Pixel hoch (y50–59).
+    # Statuszeile unten: Handy + Anzahl im WLAN, Fenster (zu mit Kreuz, offen leer) + Anzahl offen, 10 Pixel hoch (y50–59).
     # Eine einzige Vorlage zeichnet beide Icons Pixel für Pixel ('#' = Farbe) und setzt die Zeile
     # mittig unter die Temperaturzeilen, auch wenn eine Zahl zweistellig wird.
     - type: templatable
       template: |-
-        {#- Statuszeile unten: Handy + Anzahl im WLAN, Fenster (gekippt) + Anzahl offen.
+        {#- Statuszeile unten: Handy + Anzahl im WLAN, Fenster + Anzahl offen.
             Wird als Ganzes mittig unter die Temperaturzeilen gesetzt (die reichen von x6 bis x55, Mitte 30,5).
             pico_8: jedes Zeichen 3 Pixel breit + 1 Pixel Abstand. -#}
         {%- set c = states('input_select.pixoo_farbe').split('|')[1].split(',') | map('int') | list -%}
@@ -76,24 +76,37 @@
           '######',
           '##..##',
           '.####.'] -%}
-        {%- set window = [
-          '########...',
-          '#......#...',
-          '#...#######',
-          '#..##....##',
-          '#..#.....#.',
-          '#.##....##.',
-          '#.#.....#..',
-          '##.....##..',
-          '#.######...',
-          '########...'] -%}
+        {#- Fenster zu: Rahmen mit Sprossenkreuz. Mindestens eins offen: leerer Rahmen. Beide 7 breit. -#}
+        {%- set window_closed = [
+          '#######',
+          '#..#..#',
+          '#..#..#',
+          '#..#..#',
+          '#..#..#',
+          '#######',
+          '#..#..#',
+          '#..#..#',
+          '#..#..#',
+          '#######'] -%}
+        {%- set window_open = [
+          '#######',
+          '#.....#',
+          '#.....#',
+          '#.....#',
+          '#.....#',
+          '#.....#',
+          '#.....#',
+          '#.....#',
+          '#.....#',
+          '#######'] -%}
+        {%- set window = window_open if n_windows != '0' else window_closed -%}
         {%- set y0 = 50 -%}
         {%- set w1 = n_phones | length * 4 - 1 -%}
         {%- set w2 = n_windows | length * 4 - 1 -%}
-        {#- Breite: Handy 6, Abstand 2, Zahl, Abstand 3, Fenster 11, Abstand 2, Zahl -#}
-        {%- set total = 6 + 2 + w1 + 3 + 11 + 2 + w2 -%}
+        {#- Breite: Handy 6, Abstand 2, Zahl, Abstand 4, Fenster 7, Abstand 2, Zahl -#}
+        {%- set total = 6 + 2 + w1 + 4 + 7 + 2 + w2 -%}
         {%- set x0 = ((61 - total) / 2) | round(0, 'ceil') | int -%}
-        {%- set x_win = x0 + 6 + 2 + w1 + 3 -%}
+        {%- set x_win = x0 + 6 + 2 + w1 + 4 -%}
         {%- for icon in [[phone, x0], [window, x_win]] -%}
           {%- for row in icon[0] -%}
             {%- set y = y0 + loop.index0 -%}
@@ -106,5 +119,5 @@
         {%- endfor -%}
         {%- set ns.out = ns.out + [
           {'type': 'text', 'content': n_phones, 'font': 'pico_8', 'position': [x0 + 8, y0 + 2], 'color': c},
-          {'type': 'text', 'content': n_windows, 'font': 'pico_8', 'position': [x_win + 13, y0 + 2], 'color': c}] -%}
+          {'type': 'text', 'content': n_windows, 'font': 'pico_8', 'position': [x_win + 9, y0 + 2], 'color': c}] -%}
         {{ ns.out }}
