@@ -9,12 +9,18 @@
 
 - page_type: components
   components:
-    # Wetter-Icon oben rechts
-    - type: image
-      image_path: "/config/custom_components/divoom_pixoo/img/weather/{{ states('weather.forecast_home') }}.png"
-      position: [46, 7]
-      height: 8
-      width: 8
+    # Wetter-Icon oben rechts. Nur zeichnen, wenn es zum Zustand ein Bild gibt: Ein fehlendes Bild
+    # (z. B. 'unavailable.png', wenn Met.no ausfällt) bricht sonst die ganze Seite ab, und der Pixoo
+    # zeigt nach dem nächsten Neustart nur seine Standardseite (2026-11-04).
+    - type: templatable
+      template: |-
+        {%- set w = states('weather.forecast_home') -%}
+        {%- set icons = ['clear-night', 'cloudy', 'exceptional', 'fog', 'hail', 'lightning', 'lightning-rainy', 'partlycloudy', 'pouring', 'rainy', 'snowy', 'snowy-rainy', 'sunny', 'windy', 'windy-variant'] -%}
+        {%- if w in icons -%}
+        {{ [{'type': 'image', 'image_path': '/config/custom_components/divoom_pixoo/img/weather/' ~ w ~ '.png', 'position': [46, 7], 'height': 8, 'width': 8}] }}
+        {%- else -%}
+        {{ [] }}
+        {%- endif -%}
 
     # Uhrzeit
     - type: text

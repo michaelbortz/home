@@ -97,6 +97,14 @@ Wenn er im Bad hängt: in der CCU3 und in Home Assistant umbenennen (z. B. `clim
 
 **PHP2Shell:** Am Vortag (2026-10-21) kamen die Notfall-Patches für PHP2Shell heraus (CVE-2026-109618/-109619, kritische RCE-Lücken in PHP). Der Pixoo selbst nutzt kein PHP. Möglich, aber nicht belegt ist, dass Divoom deswegen Server gepatcht hat und die Zeitsynchronisierung davon betroffen war. Eine Divoom-Störung war nicht gemeldet, und der Server antwortete am Nachmittag normal. Gehen die Ausfälle weiter, eher WLAN oder Netzteil des Pixoo prüfen.
 
+### Pixoo zeigt nur die Standardseite, weil das Wetter ausgefallen ist (2026-11-04)
+
+**Symptom:** Der Pixoo zeigte seine eigene Standardseite statt der HA-Seite. Im Log stand jede Sekunde „Error rendering page for 192.168.178.95. Is the device connected to the network?“, obwohl der Pixoo im Netz erreichbar war.
+
+**Ursache:** `weather.forecast_home` (Met.no) war ab 10:25 Uhr `unavailable`. Das Wetter-Icon wurde als `.../img/weather/unavailable.png` geladen, und die Datei gibt es nicht. Die Integration fängt `FileNotFoundError` nicht ab, deshalb bricht die ganze Seite ab. Die Fehlermeldung zum Netzwerk ist irreführend. Um 10:29 Uhr startete der Pixoo kurz neu (30 s `unavailable`) und blieb danach auf seiner Standardseite.
+
+**Lösung:** Die Met-Integration neu geladen, danach war das Wetter sofort wieder da. In `pixoo64/pages.yaml` ist das Wetter-Icon jetzt ein `templatable`-Block, der das Bild nur bei einem Zustand mit vorhandenem Bild einfügt. Fällt das Wetter aus, fehlt nur das Icon. Gilt allgemein: Jede `image`-Komponente mit Vorlage im Pfad kann die Seite so abschießen.
+
 ### Handy am GL-BE3600 nicht als online erkannt (2026-11-02)
 
 **Symptom:** Michas Pixel 8 Pro wurde vom Pixoo nicht als „im WLAN“ gezählt, sobald es im Netz `GL-BE3600-208-MLO` des zweiten Routers hing.
