@@ -296,8 +296,8 @@ function send_advisory(array $adv, bool $test = false): void
         'priority' => NTFY_PRIORITY[$adv['severity']] ?? 3,
         'tags' => [$adv['severity'] === 'kritisch' ? 'rotating_light' : 'warning', 'bsi'],
     ];
+    // Kein 'click': Antippen öffnet die Nachricht in der ntfy-App, die BSI-Seite nur über den Button
     if ($adv['url'] !== '') {
-        $msg['click'] = $adv['url'];
         $msg['actions'] = [['action' => 'view', 'label' => 'Im WID öffnen', 'url' => $adv['url']]];
     }
     ntfy_send($msg);
