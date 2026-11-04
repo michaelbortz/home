@@ -34,6 +34,11 @@ Einstellen lässt sich alles unter https://ntfy.fbortz.de (Login mit Passwort un
 - „Red Hat“ auszuschließen geht nur, solange Updates aus sind. In Updates stehen die Distributionen in der Produktliste, dann würden auch echte PHP- oder OpenSSH-Warnungen wegfallen.
 - Bewusst nicht drin: Chrome und Firefox (aktualisieren sich selbst, fast wöchentlich eine Warnung), „Git“ (traf vor allem Red Hat OpenShift), „Java“ allein (traf Bouncy Castle und RabbitMQ, deshalb „Oracle Java SE“ und „OpenJDK“).
 
+## Nachrichten
+
+- Titel mit Risikostufe, Text mit Angriff, Produktbeschreibung, CVEs und Link zum WID
+- **Antippen öffnet die Nachricht in der ntfy-App, nicht die BSI-Seite** (seit 2026-11-04, bewusst kein `click` gesetzt). Zum WID geht es über den Button „Im WID öffnen“.
+
 ## Bedienung
 
 - Deploy: `bash bsi-ntfy/deploy.sh` (spielt `src`, `bin`, `public` auf und setzt den Cronjob, `data/` bleibt)
