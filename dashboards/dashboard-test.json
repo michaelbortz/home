@@ -226,9 +226,9 @@
                   "url": "/dashboard-test/heizung"
                 },
                 {
-                  "icon": "mdi:television",
+                  "icon": "mdi:lightning-bolt",
                   "label": "",
-                  "url": "/dashboard-test/amazon"
+                  "url": "/dashboard-test/strom"
                 }
               ],
               "grid_options": {
@@ -253,6 +253,158 @@
           "user": "d8045a5d26444f10b5686176f6388fe0"
         }
       ]
+    },
+    {
+      "type": "sections",
+      "max_columns": 4,
+      "icon": "mdi:radiator",
+      "path": "heizung",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "tile",
+              "entity": "schedule.thermostate_ecomodus",
+              "vertical": false,
+              "features_position": "bottom",
+              "grid_options": {
+                "columns": 6,
+                "rows": 1
+              },
+              "card_mod": {
+                "style": "ha-card {\n  {% if is_state('input_boolean.thermostat_sommermodus', 'on') %}\n    opacity: 0.4 !important;\n    filter: grayscale(100%) !important;\n    pointer-events: none !important;\n  {% endif %}\n}\n"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "input_number.temperatur_absenkung",
+              "vertical": false,
+              "features_position": "bottom",
+              "grid_options": {
+                "columns": 6,
+                "rows": 1
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "input_boolean.thermostat_sommermodus",
+              "name": "Sommermodus",
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "heading",
+              "icon": "mdi:battery",
+              "heading_style": "subtitle",
+              "heading": "Batterien Thermostate"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.thermostat_arbeitszimmer_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.thermostat_flur_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.kuche_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.thermostat_wohnzimmer_batterie",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.schlafzimmer_danfoss_ally_battery",
+              "name": {
+                "type": "area"
+              },
+              "vertical": false,
+              "features_position": "bottom"
+            },
+            {
+              "type": "heading",
+              "icon": "mdi:power",
+              "heading_style": "subtitle",
+              "heading": "Steckdose Staubi"
+            },
+            {
+              "type": "tile",
+              "entity": "input_number.steckdose_5_ausschalten_nach_x_minuten"
+            },
+            {
+              "type": "tile",
+              "entity": "input_boolean.steckdose_5_automatisch_ausschalten"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Neuer Abschnitt"
+            },
+            {
+              "type": "custom:navbar-card",
+              "routes": [
+                {
+                  "icon": "mdi:home",
+                  "label": "Home",
+                  "url": "/dashboard-test/0"
+                },
+                {
+                  "hold_action": {
+                    "action": "navigate",
+                    "navigation_path": "/config/devices/dashboard"
+                  },
+                  "icon": "mdi:leak",
+                  "label": "Devices",
+                  "url": "/dashboard-test/sensoren"
+                },
+                {
+                  "icon": "mdi:radiator",
+                  "label": "",
+                  "url": "/dashboard-test/heizung"
+                },
+                {
+                  "icon": "mdi:lightning-bolt",
+                  "label": "",
+                  "url": "/dashboard-test/strom"
+                }
+              ],
+              "grid_options": {
+                "columns": 12,
+                "rows": 1
+              }
+            }
+          ]
+        }
+      ],
+      "title": "Heizung",
+      "cards": []
     },
     {
       "type": "sections",
@@ -413,9 +565,9 @@
                   "url": "/dashboard-test/heizung"
                 },
                 {
-                  "icon": "mdi:television",
+                  "icon": "mdi:lightning-bolt",
                   "label": "",
-                  "url": "/dashboard-test/amazon"
+                  "url": "/dashboard-test/strom"
                 }
               ],
               "grid_options": {
@@ -441,30 +593,22 @@
     {
       "type": "sections",
       "max_columns": 4,
-      "icon": "mdi:radiator",
-      "path": "heizung",
+      "title": "Stromverbrauch",
+      "path": "strom",
+      "icon": "mdi:lightning-bolt",
       "sections": [
         {
           "type": "grid",
           "cards": [
             {
-              "type": "tile",
-              "entity": "schedule.thermostate_ecomodus",
-              "vertical": false,
-              "features_position": "bottom",
-              "grid_options": {
-                "columns": 6,
-                "rows": 1
-              },
-              "card_mod": {
-                "style": "ha-card {\n  {% if is_state('input_boolean.thermostat_sommermodus', 'on') %}\n    opacity: 0.4 !important;\n    filter: grayscale(100%) !important;\n    pointer-events: none !important;\n  {% endif %}\n}\n"
-              }
+              "type": "heading",
+              "heading": "Aktuell",
+              "icon": "mdi:flash"
             },
             {
               "type": "tile",
-              "entity": "input_number.temperatur_absenkung",
-              "vertical": false,
-              "features_position": "bottom",
+              "entity": "sensor.steckdose_pc_power",
+              "name": "PC",
               "grid_options": {
                 "columns": 6,
                 "rows": 1
@@ -472,75 +616,31 @@
             },
             {
               "type": "tile",
-              "entity": "input_boolean.thermostat_sommermodus",
-              "name": "Sommermodus",
-              "vertical": false,
-              "features_position": "bottom"
+              "entity": "sensor.steckdose_geschirrspuler_power",
+              "name": "Geschirrspüler",
+              "grid_options": {
+                "columns": 6,
+                "rows": 1
+              }
             },
             {
-              "type": "heading",
-              "icon": "mdi:battery",
-              "heading_style": "subtitle",
-              "heading": "Batterien Thermostate"
-            },
-            {
-              "type": "tile",
-              "entity": "binary_sensor.thermostat_arbeitszimmer_batterie",
-              "name": {
-                "type": "area"
-              },
-              "vertical": false,
-              "features_position": "bottom"
-            },
-            {
-              "type": "tile",
-              "entity": "binary_sensor.thermostat_flur_batterie",
-              "name": {
-                "type": "area"
-              },
-              "vertical": false,
-              "features_position": "bottom"
-            },
-            {
-              "type": "tile",
-              "entity": "binary_sensor.kuche_batterie",
-              "name": {
-                "type": "area"
-              },
-              "vertical": false,
-              "features_position": "bottom"
-            },
-            {
-              "type": "tile",
-              "entity": "binary_sensor.thermostat_wohnzimmer_batterie",
-              "name": {
-                "type": "area"
-              },
-              "vertical": false,
-              "features_position": "bottom"
-            },
-            {
-              "type": "tile",
-              "entity": "sensor.schlafzimmer_danfoss_ally_battery",
-              "name": {
-                "type": "area"
-              },
-              "vertical": false,
-              "features_position": "bottom"
-            },
-            {
-              "type": "heading",
-              "icon": "mdi:power",
-              "heading_style": "subtitle",
-              "heading": "Steckdose Staubi"
-            },
-            {
-              "type": "tile",
-              "entity": "input_number.steckdose_5_ausschalten_nach_x_minuten"
-            },
-            {
-              "type": "tile",
-              "entity": "input_boolean.steckdose_5_automatisch_ausschalten"
+              "type": "history-graph",
+              "title": "Leistung letzte 24 h",
+              "hours_to_show": 24,
+              "entities": [
+                {
+                  "entity": "sensor.steckdose_pc_power",
+                  "name": "PC"
+                },
+                {
+                  "entity": "sensor.steckdose_geschirrspuler_power",
+                  "name": "Geschirrspüler"
+                }
+              ],
+              "grid_options": {
+                "columns": 12,
+                "rows": 5
+              }
             }
           ]
         },
@@ -549,8 +649,38 @@
           "cards": [
             {
               "type": "heading",
-              "heading": "Neuer Abschnitt"
+              "heading": "Verbrauch pro Tag",
+              "icon": "mdi:chart-bar"
             },
+            {
+              "type": "statistics-graph",
+              "title": "kWh pro Tag (30 Tage)",
+              "chart_type": "bar",
+              "period": "day",
+              "days_to_show": 30,
+              "stat_types": [
+                "change"
+              ],
+              "entities": [
+                {
+                  "entity": "sensor.steckdose_pc_energy",
+                  "name": "PC"
+                },
+                {
+                  "entity": "sensor.steckdose_geschirrspuler_energy",
+                  "name": "Geschirrspüler"
+                }
+              ],
+              "grid_options": {
+                "columns": 12,
+                "rows": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
             {
               "type": "custom:navbar-card",
               "routes": [
@@ -574,9 +704,9 @@
                   "url": "/dashboard-test/heizung"
                 },
                 {
-                  "icon": "mdi:television",
+                  "icon": "mdi:lightning-bolt",
                   "label": "",
-                  "url": "/dashboard-test/amazon"
+                  "url": "/dashboard-test/strom"
                 }
               ],
               "grid_options": {
@@ -587,7 +717,6 @@
           ]
         }
       ],
-      "title": "Heizung",
       "cards": []
     }
   ]
