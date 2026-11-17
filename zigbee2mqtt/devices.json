@@ -30,9 +30,17 @@
     "friendly_name": "Aqara Wassersensor"
   },
   "0x00158d008b3d1756": {
+    "battery_voltage_range": {
+      "max": 3000,
+      "min": 2600
+    },
     "friendly_name": "Aqara Sensor 7"
   },
   "0x00158d008b3d3b89": {
+    "battery_voltage_range": {
+      "max": 3000,
+      "min": 2600
+    },
     "friendly_name": "Aqara Sensor 6"
   },
   "0x00158d008c68b40b": {

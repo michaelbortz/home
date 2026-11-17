@@ -37,6 +37,7 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 | `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
 | `dashboards/` | Dashboards im Speichermodus als JSON, wie in Home Assistant gespeichert (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
 | `zigbee2mqtt/addon-options.yaml` | Add-on-Optionen von Zigbee2MQTT (Verbindung zum Zigbee-Dongle) |
+| `zigbee2mqtt/devices.json` | Geräte-Einstellungen aus Zigbee2MQTT (Namen und Optionen wie `battery_voltage_range`), gelesen aus `zigbee2mqtt/bridge/info` |
 | `bsi-ntfy/` | Beruflich: BSI-Sicherheitswarnungen (CERT-Bund WID) per ntfy, läuft auf dem Hetzner-Webhosting unter https://ntfy.fbortz.de, eigener Topic. Details in `bsi-ntfy/README.md` |
 | `temp/` | Lokale Ablage für Logs und Ähnliches, wird nicht eingecheckt |
 
@@ -116,6 +117,21 @@ Wenn er im Bad hängt: in der CCU3 und in Home Assistant umbenennen (z. B. `clim
 **Nebenbei (2026-11-02):** Das Fenster-Icon in der Statuszeile ist jetzt 7 Pixel breit: mit Sprossenkreuz, wenn alle Fenster zu sind, als leerer Rahmen (`window_open`), sobald eins offen ist. Die Abstände sind daran angepasst.
 
 **Hinweis zum Ändern per API:** Die Pixoo-Seiten stehen im Options-Flow im Feld `default`, nicht in `suggested_value`. Die Antwort muss als UTF-8 gelesen werden, sonst wird „°“ zu „Â°“. Ein Fehler beim Speichern (leere `pages_data`) bringt die Integration zum Absturz, und sie lässt sich erst nach einem Neustart von HA wieder laden.
+
+### Aqara-Temperatursensoren zeigen viel zu früh 0 % Batterie (2026-11-17)
+
+**Symptom:** Aqara Sensor 6 (Wohnzimmer) und 7 (Flur) zeigten seit Ende September bzw. Mitte Juli 0 % Batterie, meldeten aber weiter zuverlässig Temperatur und Feuchte.
+
+**Ursache:** Die Sensoren (WSDCGQ11LM) melden nur die Spannung. Zigbee2MQTT rechnet daraus linear Prozente mit fest eingetragenen **2850 mV = 0 %, 3000 mV = 100 %**. Eine CR2032 läuft weit darunter weiter. Laut Langzeitstatistik fällt die Spannung um etwa 10 mV alle 2–3 Wochen. Sensor 7 lief am 2026-11-17 bei 2775 mV noch ohne Probleme. Bei welcher Spannung die Sensoren wirklich ausfallen, ist noch nicht bekannt.
+
+**Lösung (im Test seit 2026-11-17):** Seit Zigbee2MQTT 2.14.3 (zigbee-herdsman-converters 26.125.0, PR #13477) gibt es die Geräte-Option `battery_voltage_range`. Offiziell ist sie nur für den Aqara P1 (MCCGQ13LM) gedacht, der WSDCGQ11LM läuft aber durch denselben Code. Für Sensor 6 und 7 ist `{"min": 2600, "max": 3000}` gesetzt, Stand in `zigbee2mqtt/devices.json`. Sie wirkt erst ab der nächsten Meldung des Sensors. Gesetzt wird sie per MQTT:
+
+```
+Topic:   zigbee2mqtt/bridge/request/device/options
+Payload: {"id":"Aqara Sensor 7","options":{"battery_voltage_range":{"min":2600,"max":3000}}}
+```
+
+Wenn der Test klappt, auch die übrigen Aqara-Sensoren umstellen. Fällt ein Sensor aus, die Spannung davor notieren und `min` anpassen.
 
 ## Ideen für später
 
