@@ -1,0 +1,68 @@
+{
+  "0x00158d00010c4481": {
+    "friendly_name": "Fernbedienung"
+  },
+  "0x00158d000507515d": {
+    "friendly_name": "Lampe Arbeitszimmer"
+  },
+  "0x00158d000507692b": {
+    "friendly_name": "Lampe Terasse"
+  },
+  "0x00158d0006def4ae": {
+    "friendly_name": "Steckdose 5"
+  },
+  "0x00158d00096fd9c9": {
+    "friendly_name": "Aqara Sensor 5"
+  },
+  "0x00158d00096fdc1f": {
+    "friendly_name": "Aqara Sensor 4"
+  },
+  "0x00158d00096fdc26": {
+    "friendly_name": "Aqara Sensor 3"
+  },
+  "0x00158d00096ff204": {
+    "friendly_name": "Aqara Sensor 2"
+  },
+  "0x00158d0009f5d4a8": {
+    "friendly_name": "Aqara Sensor 1"
+  },
+  "0x00158d000af0b8e4": {
+    "friendly_name": "Aqara Wassersensor"
+  },
+  "0x00158d008b3d1756": {
+    "friendly_name": "Aqara Sensor 7"
+  },
+  "0x00158d008b3d3b89": {
+    "friendly_name": "Aqara Sensor 6"
+  },
+  "0x00158d008c68b40b": {
+    "friendly_name": "Fenster Sensor Bad - Aqara"
+  },
+  "0x54ef44100142bf54": {
+    "friendly_name": "Fenster Sensor Wohnzimmer - Aqara"
+  },
+  "0x7cb03eaa0a0b9c94": {
+    "friendly_name": "Steckdose 4"
+  },
+  "0x7cb03eaa0a0be9fc": {
+    "friendly_name": "Steckdose 1"
+  },
+  "0x7cb03eaa0a0bf4bf": {
+    "friendly_name": "Steckdose 2"
+  },
+  "0x7cb03eaa0a0c0050": {
+    "friendly_name": "Steckdose 3"
+  },
+  "0x881a14fffe62b55f": {
+    "friendly_name": "Schlafzimmer - Danfoss Ally"
+  },
+  "0xa4c13813a99fffff": {
+    "friendly_name": "Steckdose PC"
+  },
+  "0xa4c13813bf8cffff": {
+    "friendly_name": "Steckdose Geschirrspüler"
+  },
+  "0xcc36bbfffe0154bc": {
+    "friendly_name": "Schalter PC"
+  }
+}
