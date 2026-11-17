@@ -422,7 +422,7 @@
               "secondary": "{{ states('sensor.aqara_sensor_1_temperature') }}°C | {{ states('sensor.aqara_sensor_1_humidity') }}% \nBatterie {{ states('sensor.aqara_sensor_1_battery') }}%",
               "icon": "mdi:thermometer",
               "entity": "sensor.aqara_sensor_1_temperature",
-              "icon_color": "{% set temp = states('sensor.aqara_sensor_1_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_1_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  green\n{% else %}\n  red\n{% endif %}",
               "tap_action": {
                 "action": "more-info"
               },
@@ -437,7 +437,7 @@
               "secondary": "{{ states('sensor.aqara_sensor_6_temperature') }}°C | {{\nstates('sensor.aqara_sensor_6_humidity') }}% \nBatterie {{ states('sensor.aqara_sensor_6_battery') }}%",
               "icon": "mdi:thermometer",
               "entity": "sensor.aqara_sensor_6_temperature",
-              "icon_color": "{% set temp = states('sensor.aqara_sensor_6_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_6_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  green\n{% else %}\n  red\n{% endif %}",
               "tap_action": {
                 "action": "more-info"
               },
@@ -452,7 +452,7 @@
               "secondary": "{{ states('sensor.aqara_sensor_2_temperature') }}°C | {{\nstates('sensor.aqara_sensor_2_humidity') }}%\nBatterie {{ states('sensor.aqara_sensor_2_battery') }}%",
               "icon": "mdi:thermometer",
               "entity": "sensor.aqara_sensor_2_temperature",
-              "icon_color": "{% set temp = states('sensor.aqara_sensor_2_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_2_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  green\n{% else %}\n  red\n{% endif %}",
               "tap_action": {
                 "action": "more-info"
               },
@@ -467,7 +467,7 @@
               "secondary": "{{ states('sensor.aqara_sensor_7_temperature') }}°C | {{\nstates('sensor.aqara_sensor_7_humidity') }}%  \nBatterie {{\nstates('sensor.aqara_sensor_7_battery') }}%",
               "icon": "mdi:thermometer",
               "entity": "sensor.aqara_sensor_7_temperature",
-              "icon_color": "{% set temp = states('sensor.aqara_sensor_7_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_7_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  green\n{% else %}\n  red\n{% endif %}",
               "tap_action": {
                 "action": "more-info"
               },
@@ -482,7 +482,7 @@
               "secondary": "{{ states('sensor.aqara_sensor_4_temperature') }}°C | {{\nstates('sensor.aqara_sensor_4_humidity') }}% \nBatterie {{\nstates('sensor.aqara_sensor_4_battery') }}%",
               "icon": "mdi:thermometer",
               "entity": "sensor.aqara_sensor_4_temperature",
-              "icon_color": "{% set temp = states('sensor.aqara_sensor_4_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_4_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  green\n{% else %}\n  red\n{% endif %}",
               "tap_action": {
                 "action": "more-info"
               },
@@ -497,7 +497,7 @@
               "secondary": "{{ states('sensor.aqara_sensor_3_temperature') }}°C | {{\nstates('sensor.aqara_sensor_3_humidity') }}%\nBatterie {{\nstates('sensor.aqara_sensor_3_battery') }}%",
               "icon": "mdi:thermometer",
               "entity": "sensor.aqara_sensor_3_temperature",
-              "icon_color": "{% set temp = states('sensor.aqara_sensor_3_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_3_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  green\n{% else %}\n  red\n{% endif %}",
               "tap_action": {
                 "action": "more-info"
               },
@@ -512,7 +512,7 @@
               "secondary": "{{ states('sensor.aqara_sensor_5_temperature') }}°C | {{\nstates('sensor.aqara_sensor_5_humidity') }}%\nBatterie {{\nstates('sensor.aqara_sensor_5_battery') }}%",
               "icon": "mdi:thermometer",
               "entity": "sensor.aqara_sensor_5_temperature",
-              "icon_color": "{% set temp = states('sensor.aqara_sensor_5_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "icon_color": "{% set temp = states('sensor.aqara_sensor_5_temperature') | float(0) %} {% if temp < 19.5 %}\n  blue\n{% elif temp <= 23 %}\n  green\n{% else %}\n  red\n{% endif %}",
               "tap_action": {
                 "action": "more-info"
               },
