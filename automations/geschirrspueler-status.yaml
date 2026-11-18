@@ -3,6 +3,9 @@
 # Setzt input_select.geschirrspuler_status (Helfer, Optionen Bereit / Läuft / Fertig / Ausräumen)
 # aus der Leistung der Steckdose Geschirrspüler und dem Türsensor (Aqara T1):
 #   Bereit -> Läuft:  mehr als 2 W für 1 Minute (2026-11-18: erst 10 W / 2 min, dann 4 W; Standby mit Programm unter 1 W)
+#                     Nur aus „Bereit“ heraus (seit 2026-11-18), damit der Rest-Verbrauch nach dem Programm
+#                     (bis 2,7 W) „Fertig“/„Ausräumen“ nicht zurück auf „Läuft“ setzt. Neuer Spülgang wird
+#                     also erst nach dem Ausräumen (Tür auf > 45 s, dann zu) erkannt.
 #   Läuft  -> Fertig: 0 W (unter 1 W) für 15 Minuten, dazu ntfy-Meldung an beide
 #                     (bis 2026-11-18 unter 3 W; nach dem Programm pendelt er 0–2,7 W)
 #                     (notify.handy_frau, normale Priorität, seit 2026-11-18)
@@ -42,6 +45,9 @@ actions:
       - conditions:
           - condition: trigger
             id: laeuft
+          - condition: state
+            entity_id: input_select.geschirrspuler_status
+            state: Bereit
         sequence:
           - action: input_select.select_option
             target:
