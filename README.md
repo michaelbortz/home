@@ -124,14 +124,14 @@ Wenn er im Bad hängt: in der CCU3 und in Home Assistant umbenennen (z. B. `clim
 
 **Ursache:** Die Sensoren (WSDCGQ11LM) melden nur die Spannung. Zigbee2MQTT rechnet daraus linear Prozente mit fest eingetragenen **2850 mV = 0 %, 3000 mV = 100 %**. Eine CR2032 läuft weit darunter weiter. Laut Langzeitstatistik fällt die Spannung um etwa 10 mV alle 2–3 Wochen. Sensor 7 lief am 2026-11-17 bei 2775 mV noch ohne Probleme. Bei welcher Spannung die Sensoren wirklich ausfallen, ist noch nicht bekannt.
 
-**Lösung (im Test seit 2026-11-17):** Seit Zigbee2MQTT 2.14.3 (zigbee-herdsman-converters 26.125.0, PR #13477) gibt es die Geräte-Option `battery_voltage_range`. Offiziell ist sie nur für den Aqara P1 (MCCGQ13LM) gedacht, der WSDCGQ11LM läuft aber durch denselben Code. Für Sensor 6 und 7 ist `{"min": 2600, "max": 3000}` gesetzt, Stand in `zigbee2mqtt/devices.json`. Sie wirkt erst ab der nächsten Meldung des Sensors. Gesetzt wird sie per MQTT:
+**Lösung (seit 2026-11-18 für alle):** Seit Zigbee2MQTT 2.14.3 (zigbee-herdsman-converters 26.125.0, PR #13477) gibt es die Geräte-Option `battery_voltage_range`. Offiziell ist sie nur für den Aqara P1 (MCCGQ13LM) gedacht, der WSDCGQ11LM und der Wassersensor SJCGQ11LM laufen aber durch denselben Code (`lumi_basic`, Standard 2850–3000 mV). Getestet am 2026-11-17 mit Sensor 6 und 7: Nach der nächsten Meldung zeigten sie 54 % (2815 mV) und 46 % (2785 mV) statt 0 %. Am 2026-11-18 für Aqara Sensor 1–7 und den Wassersensor gesetzt, jeweils `{"min": 2600, "max": 3000}`, Stand in `zigbee2mqtt/devices.json`. Nicht umgestellt sind die Fenstersensoren (Bad MCCGQ11LM, Wohnzimmer MCCGQ12LM), weil sie aktuell 100 % melden. Die Option wirkt erst ab der nächsten Meldung des Sensors. Gesetzt wird sie per MQTT:
 
 ```
 Topic:   zigbee2mqtt/bridge/request/device/options
 Payload: {"id":"Aqara Sensor 7","options":{"battery_voltage_range":{"min":2600,"max":3000}}}
 ```
 
-Wenn der Test klappt, auch die übrigen Aqara-Sensoren umstellen. Fällt ein Sensor aus, die Spannung davor notieren und `min` anpassen.
+Neue Aqara-Sensoren genauso einstellen. Fällt ein Sensor aus, die Spannung davor notieren und `min` anpassen.
 
 ## Ideen für später
 
