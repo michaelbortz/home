@@ -73,6 +73,9 @@
   "0x54ef44100142bf54": {
     "friendly_name": "Fenster Sensor Wohnzimmer - Aqara"
   },
+  "0x54ef44100180e57a": {
+    "friendly_name": "Geschirrspüler Tür"
+  },
   "0x7cb03eaa0a0b9c94": {
     "friendly_name": "Steckdose 4"
   },
