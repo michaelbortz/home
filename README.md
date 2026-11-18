@@ -34,7 +34,7 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 | `automations/pixoo64-helligkeit.yaml` | Pixoo-Helligkeit nach Sonnenstand (1 % nachts, 30 % tagsüber, schaltet nie ein) |
 | `automations/wassersensor.yaml` | Wasserleck-Meldung über ntfy mit höchster Priorität |
 | `automations/steckdose-5-ausschalten.yaml` | Steckdose 5 nach eingestellter Zeit ausschalten, Meldung über ntfy |
-| `automations/geschirrspueler-status.yaml` | Status des Geschirrspülers (Bereit / Läuft / Fertig / Wird ausgeräumt) in `input_select.geschirrspuler_status`, aus Leistung der Steckdose und Türsensor |
+| `automations/geschirrspueler-status.yaml` | Status des Geschirrspülers (Bereit / Läuft / Fertig / Ausräumen) in `input_select.geschirrspuler_status`, aus Leistung der Steckdose und Türsensor |
 | `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
 | `dashboards/` | Dashboards im Speichermodus als JSON, wie in Home Assistant gespeichert (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
 | `zigbee2mqtt/addon-options.yaml` | Add-on-Optionen von Zigbee2MQTT (Verbindung zum Zigbee-Dongle) |
