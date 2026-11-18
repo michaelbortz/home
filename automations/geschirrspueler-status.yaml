@@ -1,17 +1,19 @@
 # Automation: automation.geschirrspuler_status (id geschirrspuler_status), angelegt 2026-11-18
 #
-# Setzt input_select.geschirrspuler_status (Helfer, Optionen Bereit / Läuft / Fertig)
+# Setzt input_select.geschirrspuler_status (Helfer, Optionen Bereit / Läuft / Fertig / Wird ausgeräumt)
 # aus der Leistung der Steckdose Geschirrspüler und dem Türsensor (Aqara T1):
 #   Bereit -> Läuft:  mehr als 10 W für 2 Minuten
 #   Läuft  -> Fertig: weniger als 3 W für 15 Minuten
-#   Fertig -> Bereit: Tür geöffnet (= ausgeräumt)
+#   Fertig -> Wird ausgeräumt: Tür länger als 45 Sekunden offen (seit 2026-11-18)
+#   Wird ausgeräumt -> Bereit: Tür wieder zu
+# Tür nur kurz auf (unter 45 s, z. B. Dampf rauslassen): bleibt „Fertig“.
 # Die Grenzwerte sind geschätzt und nach dem ersten Spülgang anhand der Leistungskurve
 # zu prüfen. Achtung Trocknungsphase: Viele Geräte ziehen dabei kaum Strom.
 #
 # Eintragen: Einstellungen → Automationen → neu → YAML bearbeiten.
 
 alias: "Geschirrspüler: Status"
-description: Bereit / Läuft / Fertig aus Leistung und Türsensor
+description: Bereit / Läuft / Fertig / Wird ausgeräumt aus Leistung und Türsensor
 mode: queued
 triggers:
   - trigger: numeric_state
@@ -27,7 +29,12 @@ triggers:
   - trigger: state
     entity_id: binary_sensor.geschirrspuler_tur_contact
     to: "on"
+    for: "00:00:45"
     id: tuer_auf
+  - trigger: state
+    entity_id: binary_sensor.geschirrspuler_tur_contact
+    to: "off"
+    id: tuer_zu
 actions:
   - choose:
       - conditions:
@@ -57,6 +64,18 @@ actions:
           - condition: state
             entity_id: input_select.geschirrspuler_status
             state: Fertig
+        sequence:
+          - action: input_select.select_option
+            target:
+              entity_id: input_select.geschirrspuler_status
+            data:
+              option: Wird ausgeräumt
+      - conditions:
+          - condition: trigger
+            id: tuer_zu
+          - condition: state
+            entity_id: input_select.geschirrspuler_status
+            state: Wird ausgeräumt
         sequence:
           - action: input_select.select_option
             target:
