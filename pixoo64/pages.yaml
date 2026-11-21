@@ -108,8 +108,7 @@
           '#######'] -%}
         {%- set window = window_open if n_windows != '0' else window_closed -%}
         {#- Geschirrspüler (input_select.geschirrspuler_status): Schale auf zwei Tellern (13 breit, 10 hoch),
-            nach Michas Vorlage. Bereit (und unbekannt): Pixoo-Farbe. Läuft: blinkt jede Sekunde blau.
-            Fertig: grün. Ausräumen: orange. -#}
+            nach Michas Vorlage. Bereit, Fertig (und unbekannt): Pixoo-Farbe. Läuft: blau. Ausräumen: orange. -#}
         {%- set gs = states('input_select.geschirrspuler_status') -%}
         {%- set dishes = [
           '..#########..',
@@ -122,11 +121,7 @@
           '..#########..',
           '#...........#',
           '.###########.'] -%}
-        {%- if gs == 'Läuft' -%}
-          {%- set gs_color = [0, 120, 255] if now().second % 2 == 0 else c -%}
-        {%- else -%}
-          {%- set gs_color = [0, 200, 0] if gs == 'Fertig' else ([255, 140, 0] if gs == 'Ausräumen' else c) -%}
-        {%- endif -%}
+        {%- set gs_color = [0, 120, 255] if gs == 'Läuft' else ([255, 140, 0] if gs == 'Ausräumen' else c) -%}
         {%- set y0 = 50 -%}
         {%- set w1 = n_phones | length * 4 - 1 -%}
         {%- set w2 = n_windows | length * 4 - 1 -%}
