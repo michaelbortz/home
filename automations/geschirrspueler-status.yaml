@@ -6,7 +6,9 @@
 #                     Nur aus „Bereit“ heraus (seit 2026-11-18), damit der Rest-Verbrauch nach dem Programm
 #                     (bis 2,7 W) „Fertig“/„Ausräumen“ nicht zurück auf „Läuft“ setzt. Neuer Spülgang wird
 #                     also erst nach dem Ausräumen (Tür auf > 45 s, dann zu) erkannt.
-#   Läuft  -> Fertig: 0 W (unter 1 W) für 15 Minuten, dazu ntfy-Meldung an beide
+#   Läuft  -> Fertig: 0 W (unter 1 W) für 35 Minuten, dazu ntfy-Meldung an beide
+#                     (bis 2026-11-21 15 Minuten; 20 Minuten länger, damit er zum Ausräumen
+#                     abgekühlt ist)
 #                     (bis 2026-11-18 unter 3 W; nach dem Programm pendelt er 0–2,7 W)
 #                     (notify.handy_frau, normale Priorität, seit 2026-11-18)
 #   Fertig -> Ausräumen: Tür länger als 45 Sekunden offen (seit 2026-11-18)
@@ -29,7 +31,7 @@ triggers:
   - trigger: numeric_state
     entity_id: sensor.steckdose_geschirrspuler_power
     below: 1
-    for: "00:15:00"
+    for: "00:35:00"
     id: fertig
   - trigger: state
     entity_id: binary_sensor.geschirrspuler_tur_contact
