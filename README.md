@@ -32,7 +32,7 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 |---|---|
 | `pixoo64/pages.yaml` | Seiten der Divoom Pixoo 64 im Wohnzimmer (Uhr, Datum, Wetter, Temperaturen, Handys im WLAN, offene Fenster) |
 | `automations/pixoo64-helligkeit.yaml` | Pixoo-Helligkeit nach Sonnenstand (1 % nachts, 30 % tagsüber, schaltet nie ein) |
-| `automations/wassersensor.yaml` | Wasserleck-Meldung über ntfy mit höchster Priorität |
+| `automations/wassersensor.yaml` | Wasserleck-Meldung über ntfy mit höchster Priorität (Aqara Wassersensor und Bad Wassersensor) |
 | `automations/steckdose-5-ausschalten.yaml` | Steckdose 5 nach eingestellter Zeit ausschalten, Meldung über ntfy |
 | `automations/geschirrspueler-status.yaml` | Status des Geschirrspülers (Bereit / Läuft / Fertig / Ausräumen) in `input_select.geschirrspuler_status`, aus Leistung der Steckdose und Türsensor; bei „Fertig“ Meldung über ntfy |
 | `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
