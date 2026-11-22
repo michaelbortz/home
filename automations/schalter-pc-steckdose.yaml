@@ -1,0 +1,32 @@
+# Automation: automation.schalter_pc_steckdose_pc (id schalter_pc_steckdose)
+#
+# SNZB-01P „Schalter PC“ im Arbeitszimmer schaltet switch.steckdose_pc:
+# einmal drücken = ein, lange drücken = aus, zweimal drücken = frei.
+# „Aus“ liegt auf langem Drücken, damit ein versehentlicher kurzer Druck
+# dem laufenden PC nicht den Strom abschaltet.
+
+alias: "Schalter PC: Steckdose PC"
+description: "SNZB-01P im Arbeitszimmer: einmal drücken = PC-Steckdose ein, lange drücken = aus"
+triggers:
+  - trigger: state
+    entity_id: event.schalter_pc_action
+conditions:
+  - condition: template
+    value_template: "{{ trigger.from_state.state not in ['unavailable'] and trigger.to_state.state not in ['unavailable','unknown'] }}"
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.to_state.attributes.event_type == 'single' }}"
+        sequence:
+          - action: switch.turn_on
+            target:
+              entity_id: switch.steckdose_pc
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.to_state.attributes.event_type == 'long' }}"
+        sequence:
+          - action: switch.turn_off
+            target:
+              entity_id: switch.steckdose_pc
+mode: single
