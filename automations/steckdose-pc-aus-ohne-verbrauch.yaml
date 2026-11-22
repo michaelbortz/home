@@ -1,0 +1,38 @@
+# Automation: automation.steckdose_pc_aus_ohne_verbrauch (id steckdose_pc_aus_ohne_verbrauch)
+# Angelegt 2026-11-22.
+#
+# Schaltet switch.steckdose_pc aus, wenn der PC heruntergefahren ist.
+# Die Dose fällt dann nicht auf 0 W, weil Monitore (Standby) und Soundanlage
+# weiter Strom ziehen. Gemessen 17.–22.11.: PC aus 0–17 W, PC läuft fast immer
+# über 30 W. Deshalb die Schwelle 25 W.
+#
+# Zweiter Auslöser: Nach dem Einschalten der Dose fällt die Leistung nicht
+# unter 25 W, sie liegt schon darunter. Der numeric_state-Auslöser greift dann
+# nicht. Wird der PC nicht innerhalb von 10 Minuten gestartet, geht die Dose
+# trotzdem aus.
+
+alias: "Steckdose PC: Aus ohne Verbrauch"
+description: "Schaltet die PC-Steckdose aus, wenn 2 Minuten lang weniger als 25 W fließen (PC aus, nur Monitore/Soundanlage im Standby). Nach dem Einschalten 10 Minuten Schonfrist."
+triggers:
+  - trigger: numeric_state
+    entity_id: sensor.steckdose_pc_power
+    below: 25
+    for:
+      minutes: 2
+  - trigger: state
+    entity_id: switch.steckdose_pc
+    to: "on"
+    for:
+      minutes: 10
+conditions:
+  - condition: state
+    entity_id: switch.steckdose_pc
+    state: "on"
+  - condition: numeric_state
+    entity_id: sensor.steckdose_pc_power
+    below: 25
+actions:
+  - action: switch.turn_off
+    target:
+      entity_id: switch.steckdose_pc
+mode: single
