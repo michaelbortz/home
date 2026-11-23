@@ -70,7 +70,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "9ce0ca9626b2f107418c7dd830bd9d56",
+        "id":  "da40eb2a07c47553bf52d1d8fa931800",
         "name":  "Dongle-M-1FB4",
         "name_by_user":  null,
         "area_id":  null,
@@ -80,7 +80,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "da40eb2a07c47553bf52d1d8fa931800",
+        "id":  "9ce0ca9626b2f107418c7dd830bd9d56",
         "name":  "Dongle-M-1FB4",
         "name_by_user":  null,
         "area_id":  null,
@@ -100,7 +100,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "4e7814cc48f808c6a1a7d3e7bf241792",
+        "id":  "5a5c2ccd7118bce37242a28c4b56af61",
         "name":  "Fairphone-5-5G",
         "name_by_user":  null,
         "area_id":  null,
@@ -120,7 +120,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "5a5c2ccd7118bce37242a28c4b56af61",
+        "id":  "4e7814cc48f808c6a1a7d3e7bf241792",
         "name":  "Fairphone-5-5G",
         "name_by_user":  null,
         "area_id":  null,
@@ -160,7 +160,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "1a0521e9755bb2a6505ed1c9f72fc735",
+        "id":  "81cf59ca6f76ec27902e92012eb3fb34",
         "name":  "GL-BE3600",
         "name_by_user":  null,
         "area_id":  null,
@@ -170,7 +170,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "81cf59ca6f76ec27902e92012eb3fb34",
+        "id":  "1a0521e9755bb2a6505ed1c9f72fc735",
         "name":  "GL-BE3600",
         "name_by_user":  null,
         "area_id":  null,
@@ -380,58 +380,28 @@
         "disabled_by":  null
     },
     {
-        "id":  "296afbce46304eb87ca2ed6d50137d2b",
-        "name":  "Steckdose 1",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "OSRAM",
-        "model":  "Smart+ plug",
-        "disabled_by":  null
-    },
-    {
-        "id":  "c269f1ba893ce23c6c2b09304a06bb60",
-        "name":  "Steckdose 2",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "OSRAM",
-        "model":  "Smart+ plug",
-        "disabled_by":  null
-    },
-    {
-        "id":  "10ab2bb1a4acc9666bad53b89a5049b4",
-        "name":  "Steckdose 3",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "OSRAM",
-        "model":  "Smart+ plug",
-        "disabled_by":  null
-    },
-    {
-        "id":  "39e42bc31815ba6d7b6f8523e5642237",
-        "name":  "Steckdose 4",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "OSRAM",
-        "model":  "Smart+ plug",
-        "disabled_by":  null
-    },
-    {
-        "id":  "a971f0d724d1391d694a93767b39eca3",
-        "name":  "Steckdose 5",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "KlikAanKlikUit",
-        "model":  "Zigbee socket switch",
-        "disabled_by":  null
-    },
-    {
         "id":  "6df968baed28ba3089fbe60fe5b5dd3b",
         "name":  "wohnzimmer-devolopowerlinewlan",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "7f6f584fd1dbe0679a7ffe8afb8f7263",
+        "name":  "Zwinker-der-Zwerg-Pro",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "09fdfbb2722f06b18d5c8d6c1eeb768f",
+        "name":  "Zwinker-der-Zwerg-Pro",
         "name_by_user":  null,
         "area_id":  null,
         "area":  null,
@@ -450,27 +420,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "7f6f584fd1dbe0679a7ffe8afb8f7263",
-        "name":  "Zwinker-der-Zwerg-Pro",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "FRITZ!",
-        "model":  "FRITZ!Box Tracked device",
-        "disabled_by":  null
-    },
-    {
         "id":  "0253f3fa5098b191b1a6a3930d4ff403",
-        "name":  "Zwinker-der-Zwerg-Pro",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "FRITZ!",
-        "model":  "FRITZ!Box Tracked device",
-        "disabled_by":  null
-    },
-    {
-        "id":  "09fdfbb2722f06b18d5c8d6c1eeb768f",
         "name":  "Zwinker-der-Zwerg-Pro",
         "name_by_user":  null,
         "area_id":  null,
@@ -577,6 +527,16 @@
         "area":  "Flur",
         "manufacturer":  "eQ-3",
         "model":  "HmIP-eTRV-E",
+        "disabled_by":  null
+    },
+    {
+        "id":  "a971f0d724d1391d694a93767b39eca3",
+        "name":  "Steckdose 5",
+        "name_by_user":  "Steckdose Staubsauger",
+        "area_id":  "flur",
+        "area":  "Flur",
+        "manufacturer":  "KlikAanKlikUit",
+        "model":  "Zigbee socket switch",
         "disabled_by":  null
     },
     {
@@ -817,6 +777,46 @@
         "area":  "Wohnzimmer",
         "manufacturer":  "eQ-3",
         "model":  "HmIP-eTRV-E",
+        "disabled_by":  null
+    },
+    {
+        "id":  "296afbce46304eb87ca2ed6d50137d2b",
+        "name":  "Steckdose 1",
+        "name_by_user":  "Steckdose Esstisch",
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c269f1ba893ce23c6c2b09304a06bb60",
+        "name":  "Steckdose 2",
+        "name_by_user":  "Steckdose Couchtisch",
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "10ab2bb1a4acc9666bad53b89a5049b4",
+        "name":  "Steckdose 3",
+        "name_by_user":  "Steckdose Aufladegerät",
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "39e42bc31815ba6d7b6f8523e5642237",
+        "name":  "Steckdose 4",
+        "name_by_user":  "Steckdose Weihnachtsbaum",
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
         "disabled_by":  null
     },
     {
