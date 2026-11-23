@@ -4,19 +4,23 @@
 # Schaltet switch.steckdose_pc aus, wenn der PC heruntergefahren ist.
 # Die Dose fällt dann nicht auf 0 W, weil Monitore (Standby) und Soundanlage
 # weiter Strom ziehen. Gemessen 17.–22.11.: PC aus 0–17 W, PC läuft fast immer
-# über 30 W. Deshalb die Schwelle 25 W.
+# über 30 W. Erst Schwelle 25 W.
+#
+# 2026-11-23 auf 18 W gesenkt: Am Flexispot-Schreibtisch mit Ladefunktion
+# hängt ein Handy. Beim Laden (PC aus) fließen ca. 21 W, bei 25 W ging die
+# Dose mitten im Laden aus. Ganz aus (ohne Laden) sind es ca. 6–7 W.
 #
 # Zweiter Auslöser: Nach dem Einschalten der Dose fällt die Leistung nicht
-# unter 25 W, sie liegt schon darunter. Der numeric_state-Auslöser greift dann
-# nicht. Wird der PC nicht innerhalb von 10 Minuten gestartet, geht die Dose
-# trotzdem aus.
+# unter die Schwelle, sie liegt schon darunter. Der numeric_state-Auslöser
+# greift dann nicht. Wird der PC nicht innerhalb von 10 Minuten gestartet,
+# geht die Dose trotzdem aus.
 
 alias: "Steckdose PC: Aus ohne Verbrauch"
-description: "Schaltet die PC-Steckdose aus, wenn 2 Minuten lang weniger als 25 W fließen (PC aus, nur Monitore/Soundanlage im Standby). Nach dem Einschalten 10 Minuten Schonfrist."
+description: "Schaltet die PC-Steckdose aus, wenn 2 Minuten lang weniger als 18 W fließen (PC aus, nur Monitore/Soundanlage im Standby). Lädt der Schreibtisch (Flexispot) ein Handy, bleibt sie an. Nach dem Einschalten 10 Minuten Schonfrist."
 triggers:
   - trigger: numeric_state
     entity_id: sensor.steckdose_pc_power
-    below: 25
+    below: 18
     for:
       minutes: 2
   - trigger: state
@@ -30,7 +34,7 @@ conditions:
     state: "on"
   - condition: numeric_state
     entity_id: sensor.steckdose_pc_power
-    below: 25
+    below: 18
 actions:
   - action: switch.turn_off
     target:
