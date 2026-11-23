@@ -551,6 +551,20 @@
               "badge_color": "{% set b = states('sensor.aqara_wassersensor_battery') | int(-1) %}{% if b < 0 %}grey{% elif b <= 10 %}red{% elif b <= 50 %}orange{% else %}green{% endif %}"
             },
             {
+              "type": "custom:mushroom-template-card",
+              "primary": "Bad Wasser",
+              "secondary": "{% if states('binary_sensor.bad_wassersensor_water_leak') == 'on' %} Wasserproblem !? {% else %} Alles iO {% endif %} |  {{ states('sensor.bad_wassersensor_battery') }}%",
+              "icon": "mdi:water-off",
+              "entity": "binary_sensor.bad_wassersensor_water_leak",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "color": "{% if states('binary_sensor.bad_wassersensor_water_leak') == 'on' %} red {% else %} blue {% endif %}",
+              "features_position": "bottom",
+              "badge_icon": "{% set b = states('sensor.bad_wassersensor_battery') | int(-1) %}{% if b < 0 %}mdi:battery-unknown{% elif b <= 10 %}mdi:battery-10{% elif b <= 50 %}mdi:battery-50{% else %}mdi:battery{% endif %}",
+              "badge_color": "{% set b = states('sensor.bad_wassersensor_battery') | int(-1) %}{% if b < 0 %}grey{% elif b <= 10 %}red{% elif b <= 50 %}orange{% else %}green{% endif %}"
+            },
+            {
               "type": "heading",
               "heading_style": "title",
               "heading": "Sensoren ",
