@@ -1,0 +1,832 @@
+[
+    {
+        "id":  "b6579b834af2c4b8d0819fcc0823b394",
+        "name":  "alt-ccu3-webui",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "49222d35d334c6fce6e1d19740dc54d6",
+        "name":  "AmazonBox",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "98471d5588b320a4b58607aac4d66130",
+        "name":  "Android",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "154b02f617bf289cfccca12970bef38d",
+        "name":  "BlancoChoiceAll",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "59e760fd4646f34ca16d62dc4146f9cc",
+        "name":  "Brennenstuhl-Leiste-ESP-AE33BB",
+        "name_by_user":  "Steckdose Fernseher",
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c571d8758f3d1ef63e6dd7de6607dee0",
+        "name":  "DESKTOP-DR6DV08",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "285bd19bda3d7268dae2998cd820256c",
+        "name":  "DevoloPowerLineRouterZimmer",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "9ce0ca9626b2f107418c7dd830bd9d56",
+        "name":  "Dongle-M-1FB4",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "da40eb2a07c47553bf52d1d8fa931800",
+        "name":  "Dongle-M-1FB4",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "a1ae4e31dd1455cdb29a10e46ce07633",
+        "name":  "Era",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "4e7814cc48f808c6a1a7d3e7bf241792",
+        "name":  "Fairphone-5-5G",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "f98ffedc36b556ef647de19831dba0d4",
+        "name":  "Fairphone-5-5G",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "5a5c2ccd7118bce37242a28c4b56af61",
+        "name":  "Fairphone-5-5G",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "0ccd27eb461bcb341771cbc3e7d0e7bf",
+        "name":  "Fire TV 192.168.178.49",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "Amazon",
+        "model":  "AFTGAZL (Fire TV)",
+        "disabled_by":  null
+    },
+    {
+        "id":  "bbe02e053cf884ebf283fd232f48373e",
+        "name":  "flur-devolopowerlinerouter",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c7e700a0f216c78234bbfe3cb17f54a6",
+        "name":  "FP5",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "Fairphone",
+        "model":  "FP5",
+        "disabled_by":  null
+    },
+    {
+        "id":  "5034fda08e958b5cd32bc9ce87d21793",
+        "name":  "GL-BE3600",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "81cf59ca6f76ec27902e92012eb3fb34",
+        "name":  "GL-BE3600",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "1a0521e9755bb2a6505ed1c9f72fc735",
+        "name":  "GL-BE3600",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "9e1b3347984ae92c8a6edc14fa6f71c6",
+        "name":  "gl-be3600router",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "593a67e8bc9453bfdef1b1d84e65dbda",
+        "name":  "homeassistant",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "4332ea84750d1039d30bbfa97855c17c",
+        "name":  "hpb55356-druckerarbeitszimmer",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "a4a86013adb1f4423ac8e2cf04208645",
+        "name":  "HUAWEI-P8",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "e7cd6f15abf73e6870dc14073fb8e558",
+        "name":  "iPad",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "fed0c76ca712db4a9e98a313339cf4e8",
+        "name":  "iPhone",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "158dd628a1e6631644e17246d5e7706b",
+        "name":  "K3G-EU-PEA8262A",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "885e9fe67b8bd314d6dfefc56d4a6672",
+        "name":  "LAPTOP-3HKKN2CD",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "332ee595849cf45190cb79c3ddd6d2e6",
+        "name":  "manufairphone",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "ab98f38ec975766ac0a8d45e217ddc90",
+        "name":  "ManuOnePc",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "515d890ce5e5976ea10cf42de0a34a0d",
+        "name":  "Manu-ONE-PC",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "ba4cf095ec271f905196886e1f5d8ce6",
+        "name":  "Manu-ONE-PC",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "7cef0c1c5b73b453f29d50e110c8e787",
+        "name":  "miau",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "47f6543b3e6a6ae3a9b1d1926d9dc74f",
+        "name":  "PC-192-168-178-71",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "4f2dc49bd651dd0291d6cb4a45cc8c65",
+        "name":  "PC-62-23-A3-E6-B5-1A",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "5291989363d36142e10c6ff5dc5efe4b",
+        "name":  "PC-78-6C-84-BC-98-4E",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "983801c59ed02b4ffcdac11da850c1ef",
+        "name":  "PC-F2-30-EA-FD-98-0F",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "cc669322d65d9e32b7cde18e677edc83",
+        "name":  "Pixel 8 Pro",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "Google",
+        "model":  "Pixel 8 Pro",
+        "disabled_by":  null
+    },
+    {
+        "id":  "0db191154b86e8aad155256fab83fd10",
+        "name":  "pixoo64-espressif",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "296afbce46304eb87ca2ed6d50137d2b",
+        "name":  "Steckdose 1",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c269f1ba893ce23c6c2b09304a06bb60",
+        "name":  "Steckdose 2",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "10ab2bb1a4acc9666bad53b89a5049b4",
+        "name":  "Steckdose 3",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "39e42bc31815ba6d7b6f8523e5642237",
+        "name":  "Steckdose 4",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "OSRAM",
+        "model":  "Smart+ plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "a971f0d724d1391d694a93767b39eca3",
+        "name":  "Steckdose 5",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "KlikAanKlikUit",
+        "model":  "Zigbee socket switch",
+        "disabled_by":  null
+    },
+    {
+        "id":  "6df968baed28ba3089fbe60fe5b5dd3b",
+        "name":  "wohnzimmer-devolopowerlinewlan",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "7f6f584fd1dbe0679a7ffe8afb8f7263",
+        "name":  "Zwinker-der-Zwerg-Pro",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "0253f3fa5098b191b1a6a3930d4ff403",
+        "name":  "Zwinker-der-Zwerg-Pro",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "09fdfbb2722f06b18d5c8d6c1eeb768f",
+        "name":  "Zwinker-der-Zwerg-Pro",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "fd6595eae4e49679396652e727030361",
+        "name":  "Aqara Sensor 2",
+        "name_by_user":  null,
+        "area_id":  "arbeitszimmer",
+        "area":  "Arbeitszimmer",
+        "manufacturer":  "Aqara",
+        "model":  "Temperature and humidity sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "e74372f81474ed9d781f200e56bae6ea",
+        "name":  "HmIP-eTRV-E 002AA26999CE50",
+        "name_by_user":  "Thermostat Arbeitszimmer",
+        "area_id":  "arbeitszimmer",
+        "area":  "Arbeitszimmer",
+        "manufacturer":  "eQ-3",
+        "model":  "HmIP-eTRV-E",
+        "disabled_by":  null
+    },
+    {
+        "id":  "1678c5784f85c7c0ede6b9b71bfe2fdd",
+        "name":  "Lampe Arbeitszimmer",
+        "name_by_user":  null,
+        "area_id":  "arbeitszimmer",
+        "area":  "Arbeitszimmer",
+        "manufacturer":  "Innr",
+        "model":  "Smart bulb tunable white E27",
+        "disabled_by":  null
+    },
+    {
+        "id":  "99f85062d39f25a2ed78b66613a6d616",
+        "name":  "Schalter PC",
+        "name_by_user":  null,
+        "area_id":  "arbeitszimmer",
+        "area":  "Arbeitszimmer",
+        "manufacturer":  "SONOFF",
+        "model":  "Wireless button",
+        "disabled_by":  null
+    },
+    {
+        "id":  "487a0afdd84ed56a04c80234dd99f036",
+        "name":  "Steckdose PC",
+        "name_by_user":  null,
+        "area_id":  "arbeitszimmer",
+        "area":  "Arbeitszimmer",
+        "manufacturer":  "SONOFF",
+        "model":  "Zigbee smart plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "3917c19cef1ea00f8710884419a7bea9",
+        "name":  "Aqara Sensor 3",
+        "name_by_user":  null,
+        "area_id":  "bad",
+        "area":  "Bad",
+        "manufacturer":  "Aqara",
+        "model":  "Temperature and humidity sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "8f9ed7cae5edab7cbf4123acd94aaaf1",
+        "name":  "Bad Wassersensor",
+        "name_by_user":  null,
+        "area_id":  "bad",
+        "area":  "Bad",
+        "manufacturer":  "Aqara",
+        "model":  "Water leak sensor T1",
+        "disabled_by":  null
+    },
+    {
+        "id":  "5456c655c11ee879ce869a75ae221ded",
+        "name":  "Fenster Sensor Bad - Aqara",
+        "name_by_user":  "Bad Fenster",
+        "area_id":  "bad",
+        "area":  "Bad",
+        "manufacturer":  "Aqara",
+        "model":  "Door and window sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "977e213e368dfe80036ac38db52dc61d",
+        "name":  "Aqara Sensor 7",
+        "name_by_user":  null,
+        "area_id":  "flur",
+        "area":  "Flur",
+        "manufacturer":  "Aqara",
+        "model":  "Temperature and humidity sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "da773a170750588b05752b050e582414",
+        "name":  "HmIP-eTRV-E 002AA0C9903A99",
+        "name_by_user":  "Thermostat Flur",
+        "area_id":  "flur",
+        "area":  "Flur",
+        "manufacturer":  "eQ-3",
+        "model":  "HmIP-eTRV-E",
+        "disabled_by":  null
+    },
+    {
+        "id":  "b7a16a2a6b1df6c1a626434097d97982",
+        "name":  "Aqara Sensor 5",
+        "name_by_user":  null,
+        "area_id":  "kuche",
+        "area":  "Küche",
+        "manufacturer":  "Aqara",
+        "model":  "Temperature and humidity sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "cec9b2450c9f006d0d86d4e36ce1c3e4",
+        "name":  "Aqara Wassersensor",
+        "name_by_user":  null,
+        "area_id":  "kuche",
+        "area":  "Küche",
+        "manufacturer":  "Aqara",
+        "model":  "Water leak sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "031354767d46a393cf6ec2c0b2dadb6e",
+        "name":  "Geschirrspüler Tür",
+        "name_by_user":  null,
+        "area_id":  "kuche",
+        "area":  "Küche",
+        "manufacturer":  "Aqara",
+        "model":  "Door and window sensor T1",
+        "disabled_by":  null
+    },
+    {
+        "id":  "f6cc46cf637d0c945fa6ea9223a72ad9",
+        "name":  "HmIP-eTRV-E 002A9F29B3A180",
+        "name_by_user":  "Thermostat Küche",
+        "area_id":  "kuche",
+        "area":  "Küche",
+        "manufacturer":  "eQ-3",
+        "model":  "HmIP-eTRV-E",
+        "disabled_by":  null
+    },
+    {
+        "id":  "63a292185953664ea11958052db14580",
+        "name":  "Steckdose Geschirrspüler",
+        "name_by_user":  null,
+        "area_id":  "kuche",
+        "area":  "Küche",
+        "manufacturer":  "SONOFF",
+        "model":  "Zigbee smart plug",
+        "disabled_by":  null
+    },
+    {
+        "id":  "b41da5a4dca261f62bddda69ba23d5d4",
+        "name":  "Aqara Sensor 4",
+        "name_by_user":  null,
+        "area_id":  "schlafzimmer",
+        "area":  "Schlafzimmer",
+        "manufacturer":  "Aqara",
+        "model":  "Temperature and humidity sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "fd87ba29bb477da3875090374c179b48",
+        "name":  "HmIP-eTRV-E 002A9F29B3A17F",
+        "name_by_user":  "Thermostat Schlafzimmer",
+        "area_id":  "schlafzimmer",
+        "area":  "Schlafzimmer",
+        "manufacturer":  "eQ-3",
+        "model":  "HmIP-eTRV-E",
+        "disabled_by":  null
+    },
+    {
+        "id":  "ee478abc6218c2bbf89aac289a57b46c",
+        "name":  "Schlafzimmer - Danfoss Ally",
+        "name_by_user":  null,
+        "area_id":  "schlafzimmer",
+        "area":  "Schlafzimmer",
+        "manufacturer":  "Danfoss",
+        "model":  "Ally thermostat",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c248b54294151176a3d0a3fa68311975",
+        "name":  "FRITZ!Box 7530 AX",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box 7530 AX",
+        "disabled_by":  null
+    },
+    {
+        "id":  "d0108f033b95af44052dd4cf8b23e86d",
+        "name":  "hci0 (DC:A6:32:03:DD:58)",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "Raspberry Pi Trading Ltd",
+        "model":  "bcm43438-bt",
+        "disabled_by":  null
+    },
+    {
+        "id":  "eaf4d2bc15183d9a0722ada8902d3804",
+        "name":  "hci1 (3C:78:95:36:48:03)",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  null,
+        "model":  "TP-Link Bluetooth USB Adapter (2357:0604)",
+        "disabled_by":  null
+    },
+    {
+        "id":  "329fd7c7b8058eee5692b566b825426f",
+        "name":  "HmIP-CCU3 001F9D89B72CD9",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "eQ-3",
+        "model":  "HmIP-CCU3",
+        "disabled_by":  null
+    },
+    {
+        "id":  "0beb55d8f661ca12e0a54e26e2ea7993",
+        "name":  "HmIP-RCV-50 HmIP-RCV-1",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "eQ-3",
+        "model":  "HmIP-RCV-50",
+        "disabled_by":  null
+    },
+    {
+        "id":  "e70c3ef97236334dcc1f8db2d7e52912",
+        "name":  "HM-RCV-50 BidCoS-RF",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "eQ-3",
+        "model":  "HM-RCV-50",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c272d6ff069bdb88b919d3dcb62444c9",
+        "name":  "manuhandy-hoerbuch",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "99b9cb13cb28ba70da48b8fe06361713",
+        "name":  "Raspberry Pi",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "Raspberry Pi",
+        "model":  null,
+        "disabled_by":  null
+    },
+    {
+        "id":  "c6d743fda59dbfe1e9068a280138c8c5",
+        "name":  "Raspberry Pi 4",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "Raspberry Pi",
+        "model":  "4",
+        "disabled_by":  null
+    },
+    {
+        "id":  "684600f94f5760c6e7aea6312a7bbb5f",
+        "name":  "Zigbee2MQTT Bridge",
+        "name_by_user":  null,
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "Zigbee2MQTT",
+        "model":  "Bridge",
+        "disabled_by":  null
+    },
+    {
+        "id":  "61b3b2356727a0785a4475c021eef060",
+        "name":  "Zwinker-der-Zwerg-Pro",
+        "name_by_user":  "MichaHandy",
+        "area_id":  "technik",
+        "area":  "Technik",
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "acf40075c82f66f77dab8fd3567d0c12",
+        "name":  "Aqara Sensor 1",
+        "name_by_user":  "Sensor Garten",
+        "area_id":  "terrasse",
+        "area":  "Terrasse",
+        "manufacturer":  "Aqara",
+        "model":  "Temperature and humidity sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "f309168e5d3a1bbabee3c8ae5d0f247d",
+        "name":  "Aqara Sensor 6",
+        "name_by_user":  null,
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "Aqara",
+        "model":  "Temperature and humidity sensor",
+        "disabled_by":  null
+    },
+    {
+        "id":  "12222842390adbeb43cf2753ef90acfc",
+        "name":  "Divoom Pixoo 64",
+        "name_by_user":  null,
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "Divoom",
+        "model":  "Pixoo",
+        "disabled_by":  null
+    },
+    {
+        "id":  "53ba3f329c3c4044aba69254895ecf02",
+        "name":  "Fenster Sensor Wohnzimmer - Aqara",
+        "name_by_user":  "Wohnzimmer Fenster",
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "Aqara",
+        "model":  "Door and window sensor T1",
+        "disabled_by":  null
+    },
+    {
+        "id":  "aaebc41a1450abb9b0e4c80de4a07c86",
+        "name":  "Fernbedienung",
+        "name_by_user":  null,
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "Innr",
+        "model":  "Innr RC 110 Remote Control",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c0e0744fe062bb9804c6b61fec183324",
+        "name":  "HmIP-eTRV-E 002A9F29B39DBA",
+        "name_by_user":  "Thermostat Wohnzimmer",
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "eQ-3",
+        "model":  "HmIP-eTRV-E",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c9b890d7605e5da9998867b5e1a1e9d6",
+        "name":  "Tasmota",
+        "name_by_user":  "Steckdose Fernseher",
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "Tasmota",
+        "model":  "WS EL01 DE",
+        "disabled_by":  null
+    }
+]
