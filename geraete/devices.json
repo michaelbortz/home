@@ -130,16 +130,6 @@
         "disabled_by":  null
     },
     {
-        "id":  "0ccd27eb461bcb341771cbc3e7d0e7bf",
-        "name":  "Fire TV 192.168.178.49",
-        "name_by_user":  null,
-        "area_id":  null,
-        "area":  null,
-        "manufacturer":  "Amazon",
-        "model":  "AFTGAZL (Fire TV)",
-        "disabled_by":  null
-    },
-    {
         "id":  "bbe02e053cf884ebf283fd232f48373e",
         "name":  "flur-devolopowerlinerouter",
         "name_by_user":  null,
@@ -170,7 +160,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "81cf59ca6f76ec27902e92012eb3fb34",
+        "id":  "1a0521e9755bb2a6505ed1c9f72fc735",
         "name":  "GL-BE3600",
         "name_by_user":  null,
         "area_id":  null,
@@ -180,7 +170,7 @@
         "disabled_by":  null
     },
     {
-        "id":  "1a0521e9755bb2a6505ed1c9f72fc735",
+        "id":  "81cf59ca6f76ec27902e92012eb3fb34",
         "name":  "GL-BE3600",
         "name_by_user":  null,
         "area_id":  null,
@@ -272,6 +262,16 @@
     {
         "id":  "332ee595849cf45190cb79c3ddd6d2e6",
         "name":  "manufairphone",
+        "name_by_user":  null,
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
+        "id":  "c272d6ff069bdb88b919d3dcb62444c9",
+        "name":  "manuhandy-hoerbuch",
         "name_by_user":  null,
         "area_id":  null,
         "area":  null,
@@ -440,6 +440,16 @@
         "disabled_by":  null
     },
     {
+        "id":  "61b3b2356727a0785a4475c021eef060",
+        "name":  "Zwinker-der-Zwerg-Pro",
+        "name_by_user":  "MichaHandy",
+        "area_id":  null,
+        "area":  null,
+        "manufacturer":  "FRITZ!",
+        "model":  "FRITZ!Box Tracked device",
+        "disabled_by":  null
+    },
+    {
         "id":  "7f6f584fd1dbe0679a7ffe8afb8f7263",
         "name":  "Zwinker-der-Zwerg-Pro",
         "name_by_user":  null,
@@ -472,7 +482,7 @@
     {
         "id":  "fd6595eae4e49679396652e727030361",
         "name":  "Aqara Sensor 2",
-        "name_by_user":  null,
+        "name_by_user":  "Klima Arbeitszimmer",
         "area_id":  "arbeitszimmer",
         "area":  "Arbeitszimmer",
         "manufacturer":  "Aqara",
@@ -522,7 +532,7 @@
     {
         "id":  "3917c19cef1ea00f8710884419a7bea9",
         "name":  "Aqara Sensor 3",
-        "name_by_user":  null,
+        "name_by_user":  "Klima Bad",
         "area_id":  "bad",
         "area":  "Bad",
         "manufacturer":  "Aqara",
@@ -552,7 +562,7 @@
     {
         "id":  "977e213e368dfe80036ac38db52dc61d",
         "name":  "Aqara Sensor 7",
-        "name_by_user":  null,
+        "name_by_user":  "Klima Flur",
         "area_id":  "flur",
         "area":  "Flur",
         "manufacturer":  "Aqara",
@@ -572,7 +582,7 @@
     {
         "id":  "b7a16a2a6b1df6c1a626434097d97982",
         "name":  "Aqara Sensor 5",
-        "name_by_user":  null,
+        "name_by_user":  "Klima Küche",
         "area_id":  "kuche",
         "area":  "Küche",
         "manufacturer":  "Aqara",
@@ -582,7 +592,7 @@
     {
         "id":  "cec9b2450c9f006d0d86d4e36ce1c3e4",
         "name":  "Aqara Wassersensor",
-        "name_by_user":  null,
+        "name_by_user":  "Küche Wassersensor",
         "area_id":  "kuche",
         "area":  "Küche",
         "manufacturer":  "Aqara",
@@ -622,7 +632,7 @@
     {
         "id":  "b41da5a4dca261f62bddda69ba23d5d4",
         "name":  "Aqara Sensor 4",
-        "name_by_user":  null,
+        "name_by_user":  "Klima Schlafzimmer",
         "area_id":  "schlafzimmer",
         "area":  "Schlafzimmer",
         "manufacturer":  "Aqara",
@@ -710,16 +720,6 @@
         "disabled_by":  null
     },
     {
-        "id":  "c272d6ff069bdb88b919d3dcb62444c9",
-        "name":  "manuhandy-hoerbuch",
-        "name_by_user":  null,
-        "area_id":  "technik",
-        "area":  "Technik",
-        "manufacturer":  "FRITZ!",
-        "model":  "FRITZ!Box Tracked device",
-        "disabled_by":  null
-    },
-    {
         "id":  "99b9cb13cb28ba70da48b8fe06361713",
         "name":  "Raspberry Pi",
         "name_by_user":  null,
@@ -750,16 +750,6 @@
         "disabled_by":  null
     },
     {
-        "id":  "61b3b2356727a0785a4475c021eef060",
-        "name":  "Zwinker-der-Zwerg-Pro",
-        "name_by_user":  "MichaHandy",
-        "area_id":  "technik",
-        "area":  "Technik",
-        "manufacturer":  "FRITZ!",
-        "model":  "FRITZ!Box Tracked device",
-        "disabled_by":  null
-    },
-    {
         "id":  "acf40075c82f66f77dab8fd3567d0c12",
         "name":  "Aqara Sensor 1",
         "name_by_user":  "Sensor Garten",
@@ -772,7 +762,7 @@
     {
         "id":  "f309168e5d3a1bbabee3c8ae5d0f247d",
         "name":  "Aqara Sensor 6",
-        "name_by_user":  null,
+        "name_by_user":  "Klima Wohnzimmer",
         "area_id":  "wohnzimmer",
         "area":  "Wohnzimmer",
         "manufacturer":  "Aqara",
@@ -807,6 +797,16 @@
         "area":  "Wohnzimmer",
         "manufacturer":  "Innr",
         "model":  "Innr RC 110 Remote Control",
+        "disabled_by":  null
+    },
+    {
+        "id":  "0ccd27eb461bcb341771cbc3e7d0e7bf",
+        "name":  "Fire TV 192.168.178.49",
+        "name_by_user":  null,
+        "area_id":  "wohnzimmer",
+        "area":  "Wohnzimmer",
+        "manufacturer":  "Amazon",
+        "model":  "AFTGAZL (Fire TV)",
         "disabled_by":  null
     },
     {
