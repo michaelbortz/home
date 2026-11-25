@@ -37,7 +37,7 @@ Sicherungen der Konfiguration, die in der Home-Assistant-Oberfläche gepflegt wi
 | `automations/geschirrspueler-status.yaml` | Status des Geschirrspülers (Bereit / Läuft / Fertig / Ausräumen) in `input_select.geschirrspuler_status`, aus Leistung der Steckdose und Türsensor; bei „Fertig“ Meldung über ntfy |
 | `automations/schalter-pc-steckdose.yaml` | SNZB-01P „Schalter PC“: kurz drücken = PC-Steckdose ein, lang drücken = aus |
 | `automations/steckdose-pc-aus-ohne-verbrauch.yaml` | PC-Steckdose aus, wenn 2 min unter 18 W (PC heruntergefahren, ohne Laden ca. 6–7 W; Handy laden am Flexispot-Schreibtisch ca. 21 W hält sie an); nach dem Einschalten 10 min Schonfrist |
-| `automations/heizung/` | Heizungsautomationen und -skripte (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
+| `automations/heizung/` | Heizungsautomationen und -skripte, Temperatur-Offsets der Thermostate (`thermostat-offsets.yaml`, an Aqara abgeglichen) (Tag/Absenkung, Lüften, Fernbedienung, Tag-Werte sichern, Boost, Anpassungsfahrt des Ally) |
 | `dashboards/` | Dashboards im Speichermodus als JSON, wie in Home Assistant gespeichert (`dashboard-test.json` = „Standard Dashboard“ mit Zuhause, Sensoren, Heizung; `map.json` = Karte). Die Übersicht ist automatisch erzeugt und hat keine eigene Konfiguration |
 | `geraete/devices.json` | Geräte aus Home Assistant mit Anzeigename (`name_by_user`) und Raum. Umbenannt werden nur Anzeigenamen, die Entitäts-IDs (z. B. `sensor.aqara_sensor_2_temperature` = „Klima Arbeitszimmer“) bleiben, weil Dashboard, Pixoo und Automationen daran hängen |
 | `zigbee2mqtt/addon-options.yaml` | Add-on-Optionen von Zigbee2MQTT (Verbindung zum Zigbee-Dongle) |

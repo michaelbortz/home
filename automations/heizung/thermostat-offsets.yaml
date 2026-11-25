@@ -4,9 +4,19 @@
 # homematicip_local.get_paramset / put_paramset. Bereich −3,5 … +3,5 °C, Schritt 0,5.
 # Der Offset steckt schon in current_temperature des Thermostats.
 #
-# Stand vor dem Abgleich (2026-11-25):
+# Abgleich 2026-11-25: Thermostate sollen ungefähr das zeigen, was der Aqara-Sensor
+# im selben Raum misst (die liegen an der richtigen Stelle, z. B. Wohnzimmer an der Couch).
+# Grundlage: mittlere Abweichung Aqara − Thermostat über 4 Tage (alle 10 min),
+# neuer Offset = alter Offset + Abweichung, auf 0,5 gerundet.
+# Schlafzimmer und Bad: kein Thermostat in HA, nicht abgeglichen.
+#
+# Raum           Aqara      alt    Abweichung  neu
+# Wohnzimmer     Sensor 6   -2.0   +0.47       -1.5
+# Küche          Sensor 5    0.0   +0.46       +0.5
+# Flur           Sensor 7    0.0   +0.45       +0.5
+# Arbeitszimmer  Sensor 2    0.0   -0.94       -1.0
 offsets:
-  climate.thermostat_wohnzimmer:    { address: "002A9F29B39DBA", offset: -2.0 }
-  climate.kuche:                    { address: "002A9F29B3A180", offset: 0.0 }
-  climate.thermostat_flur:          { address: "002AA0C9903A99", offset: 0.0 }
-  climate.thermostat_arbeitszimmer: { address: "002AA26999CE50", offset: 0.0 }
+  climate.thermostat_wohnzimmer:    { address: "002A9F29B39DBA", aqara: sensor.aqara_sensor_6_temperature, offset: -1.5 }
+  climate.kuche:                    { address: "002A9F29B3A180", aqara: sensor.aqara_sensor_5_temperature, offset: 0.5 }
+  climate.thermostat_flur:          { address: "002AA0C9903A99", aqara: sensor.aqara_sensor_7_temperature, offset: 0.5 }
+  climate.thermostat_arbeitszimmer: { address: "002AA26999CE50", aqara: sensor.aqara_sensor_2_temperature, offset: -1.0 }
