@@ -1,0 +1,12 @@
+# Temperatur-Offsets der Homematic-IP-Thermostate (HmIP-eTRV-E an der CCU3)
+#
+# Parameter TEMPERATURE_OFFSET im MASTER-Paramset, Kanal 1. Gelesen/gesetzt über
+# homematicip_local.get_paramset / put_paramset. Bereich −3,5 … +3,5 °C, Schritt 0,5.
+# Der Offset steckt schon in current_temperature des Thermostats.
+#
+# Stand vor dem Abgleich (2026-11-25):
+offsets:
+  climate.thermostat_wohnzimmer:    { address: "002A9F29B39DBA", offset: -2.0 }
+  climate.kuche:                    { address: "002A9F29B3A180", offset: 0.0 }
+  climate.thermostat_flur:          { address: "002AA0C9903A99", offset: 0.0 }
+  climate.thermostat_arbeitszimmer: { address: "002AA26999CE50", offset: 0.0 }
